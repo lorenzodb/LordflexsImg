@@ -1813,9 +1813,9 @@ app.controller("defaultController", ["$scope", "currentObject", "$timeout", "$md
             model: "Lady Memory",
             name: "Lady Memory",
             positionMotor: "2",
-            urlIcon: "/applications/" + $scope.object.objectId + "/mattresses_img/LadyMemory.png",
-            urlDesktop: "/applications/" + $scope.object.objectId + "/mattresses_img/schede/ladymemory.png",
-            urlMobile: "/applications/" + $scope.object.objectId + "/mattresses_img/schedeMobile/ladymemory.png"
+            urlIcon: "/applications/" + $scope.object.objectId + "/mattresses_img/ladymemory.png",
+            urlDesktop: "/applications/" + $scope.object.objectId + "/mattresses_img/schede/LadyMemory.png",
+            urlMobile: "/applications/" + $scope.object.objectId + "/mattresses_img/schedeMobile/LadyMemory.png"
         },
         {
             model: "Aquagel",
@@ -1826,7 +1826,7 @@ app.controller("defaultController", ["$scope", "currentObject", "$timeout", "$md
             urlMobile: "/applications/" + $scope.object.objectId + "/mattresses_img/schedeMobile/Aquagel.png"
         },
         {
-            model: "LadySoft",
+            model: "Lady Soft",
             name: "Lady Soft",
             positionMotor: "4",
             urlIcon: "/applications/" + $scope.object.objectId + "/mattresses_img/ladysoft.png",
