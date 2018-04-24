@@ -1457,7 +1457,7 @@ app.controller("defaultController", ["$scope", "currentObject", "$timeout", "$md
         dataMiddle.weight = String(Number(dataMiddle.weight) / 3);
         console.log("dataMiddle.weight", dataMiddle.weight);
 		var gcm3 = $scope.calculateLevel({
-			'peso' : dataMiddle.weight,
+			'peso' : (dataMiddle.weight-3),
 			'altezza' :  dataMiddle.height
 		})
 		var level = 0;
@@ -1794,7 +1794,7 @@ app.controller("defaultController", ["$scope", "currentObject", "$timeout", "$md
     /* CATALOGUE functions and variables ----------------------------- */
     $scope.catalogue = [
         {
-            model: "Aniversario 50",
+            model: "Aniversario50",
             name: "Aniversario 50",
             positionMotor: "0",
             urlIcon: "/applications/" + $scope.object.objectId + "/mattresses_img/aniversario50.png",
@@ -1826,7 +1826,7 @@ app.controller("defaultController", ["$scope", "currentObject", "$timeout", "$md
             urlMobile: "/applications/" + $scope.object.objectId + "/mattresses_img/schedeMobile/Aquagel.png"
         },
         {
-            model: "Lady Soft",
+            model: "LadySoft",
             name: "Lady Soft",
             positionMotor: "4",
             urlIcon: "/applications/" + $scope.object.objectId + "/mattresses_img/ladysoft.png",
