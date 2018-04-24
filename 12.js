@@ -1761,6 +1761,7 @@ app.controller("defaultController", ["$scope", "currentObject", "$timeout", "$md
                 filename: "Scheda Comfort Test di " + $scope.personName + " " + $scope.personSurname + ".pdf",
                 path: "./public/applications/12/PDF/scheda_cliente.pdf"
             }],
+            from: 'Lordflex\'s <info@apio.cc>',
             mail: $scope.personEmail,
             subject: "ComfortTest LordFlex's: scheda " + subjectSexAbbr + " " + $scope.personSurname,
             text: "Salve, di seguito alleghiamo il report del ComfortTest che lei ha effettuato. Per qualsiasi ulteriore informazioni non esiti a contattarci. Cordialmente."
