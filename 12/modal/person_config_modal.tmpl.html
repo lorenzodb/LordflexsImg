@@ -1,0 +1,85 @@
+<md-dialog aria-label="Person Details Modal" class="dialog_width">
+    <!-- -->
+    <form ng-cloak>
+        <md-toolbar style="background-color: #071d50;">
+            <div class="md-toolbar-tools">
+                <h2 style="text-transform: uppercase; font-weight: 600;">Informazioni generali</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon class="material-icons" aria-label="Close dialog">close</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div id="report_modal_container" class="md-dialog-content" style="padding-bottom: 2px;">
+
+                <p style="margin-top: 0;">Per iniziare il Test inserisci le seguenti informazioni:</p>
+
+                <div layout="row" layout-fill layout-wrap layout-align="center start">
+                    <div flex="50" flex-sm="100" flex-xs="100">
+                        <div layout="column" layout-fill layout-wrap layout-margin>
+                            <div flex layout="row" layout-align="center center" style="margin-top: 10px;">
+                                <p flex="20" style="margin: 0;">Nome</p>
+                                <input ng-model="personName" type="text" flex="80" class="form-control" placeholder="Nome"
+                                       title="Person Name">
+                            </div>
+                            <div flex layout="row" layout-align="center center" style="margin-top: 20px;">
+                                <p flex="20" style="margin: 0;">Cognome</p>
+                                <input ng-model="personSurname" type="text" flex="80" class="form-control" placeholder="Cognome"
+                                       title="Person Surname">
+                            </div>
+                            <div flex layout="row" layout-align="center center" style="margin-top: 20px;">
+                                <p flex="20" style="margin: 0;">Età</p>
+                                <input ng-model="personAge" type="number" flex="80" min="1" max="120" class="form-control" placeholder="Età"
+                                       title="Person Age">
+                            </div>
+                            <div flex layout="row" layout-align="center center" style="margin-top: 20px;">
+                                <p flex="20" style="margin: 0;">Sesso</p>
+                                <select flex="80" ng-model="sesso" class="form-control" title="Person Gender">
+                                    <option value="uomo">Maschio</option>
+                                    <option value="donna">Femmina</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div flex="50" flex-sm="100" flex-xs="100">
+                        <div layout="column" layout-fill layout-wrap layout-margin>
+                            <div flex layout="row" layout-align="center center" style="margin-top: 0;">
+                                <p flex="20" style="margin: 0;">{{altezza}} cm</p>
+                                <md-slider-container flex="80">
+                                    <md-slider ng-model="altezza" min="100" max="205" aria-label="Height"
+                                               id="personHeight"
+                                               class="md-primary" md-vertical md-range>
+                                    </md-slider>
+                                </md-slider-container>
+                            </div>
+                            <div flex layout="row" layout-align="end center" style="margin-top: 0;">
+                                <div flex="80" style="height: 230px; margin-left: auto; margin-right: auto;">
+                                    <div layout="row" layout-align="center center">
+                                        <img style="width: {{altezza/2}}px;" ng-show="sesso === 'uomo'"
+                                             src="applications/{{object.objectId}}/img/sagomaUomoBlack.png"/>
+                                        <img style="width: {{altezza/2}}px;" ng-show="sesso === 'donna'"
+                                             src="applications/{{object.objectId}}/img/sagomaDonna.png"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button style="padding: 0 14px; background-color: #071d50;" class="md-primary md-raised" ng-click="startTest()" ng-disabled="personName === '' || personSurname === '' || !personAge">
+                <!-- ng-style="{ 'background-color' : personName !== '' && personSurname !== '' && personAge !== '' && personAge ? '#071d50' : 'rgba(0,0,0,0.12)' }" -->
+                <span ng-show="personName === '' || personSurname === '' || !personAge">Informazioni mancanti</span>
+                <span ng-show="personName !== '' && personSurname !== '' && personAge">Procedi</span>
+            </md-button>
+        </md-dialog-actions>
+
+    </form>
+</md-dialog>

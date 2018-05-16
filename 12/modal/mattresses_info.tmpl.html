@@ -1,0 +1,70 @@
+<md-dialog aria-label="mattress information" class="mattressInfo_dialog_width">
+    <form ng-cloak>
+        <md-toolbar ng-if="twoMattressInfo === false" style="background-color: #071d50;">
+            <div class="md-toolbar-tools">
+                <h2 style="text-transform: uppercase; font-weight: 600;">{{value.name}}</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon class="material-icons" aria-label="Close dialog">close</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-toolbar ng-if="twoMattressInfo === true" style="background-color: #071d50;">
+            <div class="md-toolbar-tools">
+                <h2 ng-show="mattressInfo1" style="text-transform: uppercase; font-weight: 600;">1/2 -
+                    {{value.name}}</h2>
+                <h2 ng-show="mattressInfo2" style="text-transform: uppercase; font-weight: 600;">2/2 -
+                    {{value.name2}}</h2>
+                <span flex></span>
+                <md-button ng-show="mattressInfo1" class="md-icon-button" ng-click="showMattressInfo('2')">
+                    <md-icon class="material-icons" aria-label="Show second mattress info">keyboard_arrow_right
+                    </md-icon>
+                </md-button>
+                <md-button ng-show="mattressInfo2" class="md-icon-button" ng-click="showMattressInfo('1')">
+                    <md-icon class="material-icons" aria-label="Show first mattress info">keyboard_arrow_left</md-icon>
+                </md-button>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon class="material-icons" aria-label="Close dialog">close</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div id="mattresses_info_container" class="md-dialog-content">
+
+                <md-content id="mattresses_info_content">
+                    <div layout-fill ng-show="mattressInfo1">
+                        <div flex>
+
+                            <!--<p>value = {{value}}</p>-->
+                            <img layout-fill hide-xs class="mattressInfoImg" src="{{value.urlDesktop}}" flex/>
+                            <img layout-fill hide-lg hide-md hide-sm class="mattressInfoImg" src="{{value.urlMobile}}"
+                                 flex/>
+
+                        </div>
+                    </div>
+                    <div layout-fill ng-show="mattressInfo2">
+                        <div flex>
+
+                            <!--<p>value = {{value}}</p>-->
+                            <img layout-fill hide-xs class="mattressInfoImg" src="{{value.urlDesktop2}}" flex/>
+                            <img layout-fill hide-lg hide-md hide-sm class="mattressInfoImg" src="{{value.urlMobile2}}"
+                                 flex/>
+
+                        </div>
+                    </div>
+                </md-content>
+
+            </div>
+        </md-dialog-content>
+
+        <!--
+            <md-dialog-actions layout="row">
+                <span flex></span>
+                <md-button class="md-primary md-raised" ng-click="createNewEvent()">Add Event</md-button>
+            </md-dialog-actions>
+        -->
+
+    </form>
+</md-dialog>

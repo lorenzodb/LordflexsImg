@@ -1,0 +1,538 @@
+<!--Copyright 2014-2015 Alex Benfaremo, Alessandro Chelli, Lorenzo Di Berardino, Matteo Di Sabatino-->
+
+<!---------------------------------- LICENSE --------------------------------
+-                                                                           -
+- This file is part of ApioOS.                                              -
+-                                                                           -
+- ApioOS is free software released under the GPLv2 license: you can         -
+- redistribute it and/or modify it under the terms of the GNU General       -
+- Public License version 2 as published by the Free Software Foundation.    -
+-                                                                           -
+- ApioOS is distributed in the hope that it will be useful, but             -
+- WITHOUT ANY WARRANTY; without even the implied warranty of                -
+- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the              -
+- GNU General Public License version 2 for more details.                    -
+-                                                                           -
+- To read the license either open the file COPYING.txt or                   -
+- visit <http://www.gnu.org/licenses/gpl2.txt>                              -
+-                                                                           -
+---------------------------------------------------------------------------->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <style>
+        .uomo {
+            width: 35%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: -7%;
+        }
+
+        .donna {
+            width: 25%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: -8%;
+        }
+
+        .dropNotifyMenu {
+            bottom: auto !important;
+            min-width: 100% !important;
+        }
+
+        .dropNotifyPup {
+            background: none !important;
+        }
+
+        #img_logo {
+            height: 32px;
+            width: 100px;
+            background: url("images/logo.png") no-repeat;
+            background-size: contain;
+        }
+
+        .drawer_active_link {
+            background-color: #e0e0e0;
+        }
+
+        @font-face {
+            font-family: 'Apio';
+            src: url('/font/APIO.ttf') format('truetype');
+        }
+
+        i.material-icons {
+        / / font-family: Apio !important;
+        / / height: 40 px;
+        / / width: 40 px;
+        / / line-height: 48 px;
+        / / border: 0;
+        / / color: rgba(255, 255, 255, 0);
+        / / background: url("images/logo.png") no-repeat;
+        / / background-size: contain;
+            color: rgba(0, 0, 0, 0.67);
+        }
+
+        .mdl-navigation__link {
+            cursor: pointer;
+        }
+
+        .pulse1 {
+            -webkit-animation: pulse1 2s linear infinite;
+            -moz-animation: pulse1 2s linear infinite;
+            -ms-animation: pulse1 2s linear infinite;
+            animation: pulse1 2s linear infinite;
+        }
+
+        @keyframes pulse1 {
+            0% {
+                color: rgb(255, 160, 22);
+            }
+            50% {
+                color: rgba(255, 0, 0, 0);
+            }
+            100% {
+                color: rgb(255, 160, 22);
+            }
+        }
+
+        @-moz-keyframes pulse1 {
+            0% {
+                color: rgb(255, 160, 22);
+            }
+            50% {
+                color: rgba(255, 0, 0, 0);
+            }
+            100% {
+                color: rgb(255, 160, 22);
+            }
+        }
+
+        @-webkit-keyframes pulse1 {
+            0% {
+                color: rgb(255, 160, 22);
+            }
+            50% {
+                color: rgba(255, 0, 0, 0);
+            }
+            100% {
+                color: rgb(255, 160, 22);
+            }
+        }
+
+        @-ms-keyframes pulse1 {
+            0% {
+                color: rgb(255, 160, 22);
+            }
+            50% {
+                color: rgba(255, 0, 0, 0);
+            }
+            100% {
+                color: rgb(255, 160, 22);
+            }
+        }
+    </style>
+    <!--<link id="favicon" rel="shortcut icon" type="image/x-icon" href="public/apio_assets/img/favicon.ico"/>-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=0, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="yes"/>
+    <meta name="theme-color" content="#ffffff">
+    <title>ApioOS</title>
+    <link id="favicon" rel="apple-touch-icon" href="html/apple-touch-icon.png"/>
+    <link id="favicon1" rel="apple-touch-icon-precomposed" href="html/apple-touch-icon.png"/>
+    <link id="head" rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap-sweetalert/dist/sweetalert.css"/>
+
+    <link rel="stylesheet" type="text/css" href="/bower_components/morris.js/morris.css"/>
+
+    <link rel="stylesheet" type="text/css" href="/bower_components/vis/dist/vis.min.css"/>
+
+    <link rel="stylesheet"
+          href="/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker3.standalone.min.css"/>
+    <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
+    <link rel="stylesheet" href="/stylesheets/fontApio.css"/>
+    <link rel="stylesheet" href="/stylesheets/app2.css"/>
+    <link rel="stylesheet" href="/stylesheets/app2_media_query_992_1199.css"/>
+    <link rel="stylesheet" href="/stylesheets/app2_media_query_768_991.css"/>
+    <link rel="stylesheet" href="/stylesheets/app2_media_query_480_767.css"/>
+    <link rel="stylesheet" href="/stylesheets/app2_media_query_320_479.css"/>
+    <link rel="stylesheet" href="/stylesheets/app2_media_query_1200.css"/>
+
+    <link rel="stylesheet" href="/bower_components/material-design-lite/material.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
+</head>
+<body style="width: 1422px; height: 730px;">
+<div id="ApioApplication12"
+     style="height: 100%; width: 100%; background-color: white;">
+    <!-- background: linear-gradient(#284679, #001548); -->
+    <div style="display: block;">
+
+        <style>
+
+            @font-face {
+                font-family: InterstateUltraBlackCondensed;
+                src: url("applications/12/font/Interstate-UltraBlackCondensed/Interstate-UltraBlackCondensed.ttf");
+            }
+
+            @font-face {
+                font-family: Interstate-LightCondensed;
+                src: url("applications/12/font/Interstate-LightCondensed/Interstate-LightCondensed.ttf");
+            }
+
+            @font-face {
+                font-family: Interstate-BoldCondensed;
+                src: url("applications/12/font/Interstate-BoldCondensed/Interstate-BoldCondensed.ttf");
+            }
+
+            md-backdrop.md-dialog-backdrop {
+                z-index: 1033;
+            }
+
+            .md-scroll-mask {
+                z-index: 1034 !important;
+            }
+
+            .md-dialog-container {
+                z-index: 1035;
+            }
+
+            .dialog_width {
+                min-width: 60%;
+            }
+
+            md-dialog-actions {
+                border-top: 1px solid #e8e8e8;
+                margin-top: 1px;
+            }
+
+            #defaultController {
+                height: 99% !important;
+            }
+
+            .sagoma {
+            / / border-right: solid 1 px #fff;
+                width: 100%;
+                background: no-repeat;
+                position: absolute;
+                z-index: 2;
+                height: 130%;
+                background-image: url("/applications/12/img/sagomaUomoWhite.png");
+                background-position: 50% 26%;
+                background-size: 36%;
+            }
+
+            .sagomaLeft {
+                background-image: url("/applications/12/img/sleepLeft.png") !important;
+                background-position: 55% 40%;
+                background-size: 39%;
+            }
+
+            .sagomaRight {
+                background-image: url("/applications/12/img/sleepRight.png") !important;
+                background-position: 43% 33%;
+                background-size: 39%;
+            }
+
+            .profilo {
+                width: 100%;
+                background: no-repeat;
+                position: static;
+                z-index: 2;
+                height: 678px;
+                background-image: url("/applications/12/img/profiloFrontale.png");
+                background-position: 16% 32%;
+                background-size: 74%;
+            }
+
+            .prfiloFrontale {
+                background-image: url("/applications/12/img/profiloFrontale.png");
+                background-position: 16% 32%;
+                background-size: 74%;
+            }
+
+            .prfiloLaterale {
+                background-image: url("/applications/12/img/profiloLaterale.png") !important;
+                background-position: 16% 32%;
+                background-size: 74%;
+            }
+
+            .infoCell {
+                color: #fff;
+                width: 149px;
+                display: table-cell;
+                height: 95px;
+                /* background: #fff; */
+                border-radius: 3px;
+                /* border: solid 1px rgba(24, 51, 102, 0.04); */
+                /* margin-top: 2px; */
+            }
+
+            #info {
+                position: absolute;
+                width: 100%;
+                /* width: 164px; */
+                margin-top: 14%;
+                /* margin-bottom: -22%; */
+                /* margin-left: 86%; */
+                /* bottom: 0; */
+                color: #000;
+            }
+
+            .prova {
+                height: 100% !important;
+            }
+
+            md-tabs-canvas {
+                /*border-bottom: 1px solid #00539A;*/
+                background-color: #071d50;
+            }
+
+            md-pagination-wrapper.md-center-tabs {
+                width: initial !important
+            }
+
+            md-tabs-wrapper md-next-button, md-tabs-wrapper md-prev-button {
+                background-color: #071d50;
+            }
+
+            md-tabs-wrapper md-prev-button.md-disabled, md-tabs-wrapper md-next-button.md-disabled {
+                opacity: 1;
+            }
+
+            md-tabs .md-tab {
+                color: #fff;
+            }
+
+            md-tabs .md-tab.md-active {
+                color: #fff;
+                font-weight: 600;
+            }
+
+            md-tabs md-ink-bar {
+                color: #00C3E6;
+                background: #00C3E6;
+            }
+
+            md-tabs-wrapper md-prev-button md-icon, md-tabs-wrapper md-next-button md-icon {
+                fill: white;
+            }
+
+            md-progress-circular.md-default-theme .md-inner .md-right .md-half-circle, md-progress-circular .md-inner .md-right .md-half-circle {
+                border-right-color: rgb(255, 255, 255);
+            }
+
+            md-progress-circular.md-default-theme .md-inner .md-left .md-half-circle, md-progress-circular .md-inner .md-left .md-half-circle, md-progress-circular.md-default-theme .md-inner .md-right .md-half-circle, md-progress-circular .md-inner .md-right .md-half-circle {
+                border-top-color: rgb(255, 255, 255);
+            }
+
+            #buttonNewTest {
+                display: table;
+                width: 100%;
+                height: 100%;
+            }
+
+            .button {
+                display: table-cell;
+                vertical-align: middle;
+                width: 100%;
+                height: 100%;
+            }
+
+            .ceneterButton {
+                width: 154px;
+                height: 50px;
+                margin-left: auto;
+                margin-right: auto;
+
+            }
+
+            /* WIZARD STYLE ---------------- */
+            #wizard_container {
+                z-index: 5;
+                margin-top: 50px;
+            }
+
+            #wizardFirstStepImg {
+                background-color: #071d50;
+                width: 120px;
+            }
+
+            .firstStepImgYellow {
+                background-color: #F1C40F !important;
+            }
+
+            /* CATALOGUE STYLE ---------------- */
+            .mattressIconContainer {
+                text-align: center;
+                padding: 34px 0 !important;
+            }
+
+            .mattressIcon {
+                width: 130px;
+            }
+
+            .mattressInfoImg {
+                width: 100%;
+            }
+
+            #mattresses_info_container {
+                padding: 0 !important;
+            }
+
+            .catalogue_title {
+                width: 85%;
+                text-align: center;
+                padding-top: 50px;
+                margin-bottom: 0;
+                font-size: 32px;
+                color: whitesmoke;
+                font-weight: 400;
+                font-style: italic;
+            }
+
+            /* HISTORY STYLE ---------------- */
+            .historyIcon {
+                width: 100%;
+            }
+
+            .historyTextContainer {
+                color: whitesmoke !important;
+                padding: 20px 28px;
+            }
+
+            .historyTextContainer p {
+                margin-bottom: 12px;
+                line-height: 1.5;
+                /* font-size: 15px; */
+                letter-spacing: 0.5px;
+            }
+
+            @media only screen and (max-width: 349px) {
+                .dialog_width {
+                    min-width: 100%;
+                }
+            }
+
+            @media only screen and (min-width: 350px) and (max-width: 767px) {
+                .dialog_width {
+                    min-width: 100%;
+                }
+            }
+
+            @media only screen and (min-width: 768px) and (max-width: 1199px) {
+
+            }
+
+        </style>
+
+        <div id="app" style="display: block; width: 100%; height:100%;">
+
+            <nav class="navbar navbar-inverse" style="background-color: #071d50; border-radius: 0; margin-bottom: 0; border: none;">
+                <div class="container-fluid">
+                    <div class="navbar-header" style="float: none;">
+                        <p class="navbar-brand" id="mattressName" style="color: white; text-transform: uppercase; font-weight: 600; float: none; margin: 0 !important; text-align: center; width: 100%;"></p>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="container-fluid" style="max-height: 680px;">
+                <div class="row" style="max-height: 680px;">
+
+                    <img id="mattressImg" class="img-responsive" style="max-height: 680px;" />
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+
+
+<script src="/bower_components/jquery/dist/jquery.js"></script>
+<script src="/bower_components/angular/angular.js"></script>
+
+
+<script src="/bower_components/chart.js/dist/Chart.js"></script>
+
+<script src="/bower_components/later/later.js"></script>
+<script src="/bower_components/angular-route/angular-route.js"></script>
+<script src="/bower_components/hammerjs/hammer.js"></script>
+<script src="/bower_components/jqueryui/jquery-ui.js"></script>
+<script src="/bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+<script src="/bower_components/angular-css-injector/angular-css-injector.js"></script>
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/bower_components/moment/min/moment-with-locales.min.js"></script>
+<script type="text/javascript"
+        src="/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript"
+        src="/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="/bower_components/bootstrap-sweetalert/dist/sweetalert.js"></script>
+<script type="text/javascript" src="/bower_components/angular-h-sweetalert/dist/ngSweetAlert.js"></script>
+<script type="text/javascript" src="/bower_components/angular-file-upload/angular-file-upload.min.js"></script>
+<script type="text/javascript" src="/bower_components/file-saver.js/FileSaver.js"></script>
+<script type="text/javascript" src="/bower_components/angular-file-saver/dist/angular-file-saver.min.js"></script>
+<script type="text/javascript" src="/bower_components/js-xlsx/dist/xlsx.full.min.js"></script>
+<script type="text/javascript" src="/bower_components/ngFileReader/vendor/jquery.FileReader.js"></script>
+<script type="text/javascript" src="/bower_components/ngFileReader/src/ngFileReader.js"></script>
+<script type="text/javascript" src="/bower_components/jszip/dist/jszip.min.js"></script>
+
+<script type="text/javascript" src="/bower_components/plotlyjs/plotly.js" charset="utf-8"></script>
+
+<script type="text/javascript" src="/bower_components/raphael/raphael.min.js"></script>
+<script type="text/javascript" src="/bower_components/morris.js/morris.min.js"></script>
+
+<script type="text/javascript" src="/bower_components/vis/dist/vis.min.js"></script>
+<script src="/bower_components/Snap.svg/dist/snap.svg-min.js"></script>
+<!--<script src="/bower_components/Snap.js/snap.min.js"></script>-->
+<script src="/bower_components/angular-aria/angular-aria.js"></script>
+<script src="/bower_components/angular-animate/angular-animate.js"></script>
+<script src="/bower_components/angular-material/angular-material.js"></script>
+<script src="/javascripts/jquery-cron/cron/jquery-cron.js"></script>
+<!--<script src="apioProperties/Charts/charts.js"></script>-->
+<!--<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3.21&libraries=places&sensor=false"></script>-->
+<script src="/bower_components/material-design-lite/material.min.js"></script>
+
+
+<script type="text/javascript">
+    //document.getElementById("app").classList.add("fullscreen");
+
+
+
+    var http_auth = new XMLHttpRequest();
+    http_auth.open("POST", "/apio/user/authenticate", true);
+    http_auth.setRequestHeader("Content-Type", "application/json");
+    http_auth.onreadystatechange = function () {
+        if (http_auth.readyState === 4 && http_auth.status === 200) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (xhttp.readyState === 4 && xhttp.status === 200) {
+                    var scope = JSON.parse(xhttp.responseText);
+                    console.log("scope = ", scope);
+
+                    /* MATTRESSES.HTML functions and variables ************************************************++ */
+                    //var mattressName = scope.name;
+                    var mattressName = document.getElementById('mattressName');
+                    mattressName.innerHTML = scope.name;
+                    var mattressImg = document.getElementById('mattressImg');
+                    mattressImg.src = scope.urlDesktop;
+
+
+                }
+            };
+
+            xhttp.open("GET", "/applications/12/PDF/data.json", true);
+            xhttp.send();
+        }
+    };
+
+    http_auth.send(JSON.stringify({
+        email: "admin",
+        password: "admin",
+        rememberMe: "1"
+    }));
+</script>

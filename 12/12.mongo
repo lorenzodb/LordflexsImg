@@ -1,0 +1,36 @@
+{
+    "address": "99",
+    "apioId": "db54d659-f7e2-486b-a673-d7f6a7bf7d65",
+    "db": {},
+    "name": "Postura",
+    "notifications": {},
+    "objectId": "12",
+    "properties": {
+        "mat": {
+            "label": "mat",
+            "style": "display: none;",
+            "type": "textbox",
+            "value": "1|0|1|1|0|0|0|1|0|0|0|0|1|0|1|0|0|0|1|0|0|0|0|0|0|1|0|0|1|0|0|0|0|1|0|0|1|0|0|0|1|0|0|0|0|0|0|0|0|"
+        },
+        "moveDeg": {
+            "label": "moveDeg",
+            "style": "display: none;",
+            "type": "textbox",
+            "value": "258"
+        },
+        "pes": {
+            "label": "pes",
+            "style": "display: none;",
+            "type": "textbox",
+            "value": "31999994,0000|31999992.0000|31999988.0000|31999992.0000|"
+        },
+        "tara": {
+            "label": "tara",
+            "style": "display: none;",
+            "type": "trigger",
+            "value": "93,3334"
+        }
+    },
+    "protocol": "l",
+    "type": "object"
+}

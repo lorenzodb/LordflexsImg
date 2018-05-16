@@ -1,0 +1,46 @@
+<md-dialog aria-label="Person Test Report" class="dialog_width">
+    <form name="personReportForm" ng-cloak>
+        <md-toolbar style="background-color: #071d50;">
+            <div class="md-toolbar-tools">
+                <h2 style="text-transform: uppercase; font-weight: 600;">Scheda {{personName}} {{personSurname}}</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon class="material-icons" aria-label="Close dialog">close</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div id="report_modal_container" class="md-dialog-content" style="padding: 0;">
+
+                <md-content id="report_modal_content">
+                    <div layout-fill>
+                        <div flex>
+                            <iframe src="applications/12/PDF/scheda_cliente.pdf" width="100%"
+                                    style="min-height: 70vh; border: 0 !important;"></iframe>
+                        </div>
+                    </div>
+                </md-content>
+
+            </div>
+        </md-dialog-content>
+
+
+        <md-dialog-actions layout="row">
+            <input name="personReportInput" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" type="email" ng-model="personEmail" class="form-control" placeholder="esempio@mail.it"
+                   title="Person e-mail">
+            <span flex></span>
+            <md-button class="md-primary md-raised"
+                       ng-disabled="!personReportForm.personReportInput.$valid || personEmail === ''" ng-click="sendReportByMail()"
+                       ng-class="{'buttonGreen' : mailSent === 2, 'buttonRed' : mailSent === 3}">
+                <!-- ng-style="{'background-color' : (mailSent === 2 ? '#228B22' : '')}" -->
+                <span ng-show="mailSent === 0">Invia <i class="glyphicon glyphicon-envelope"></i></span>
+                <span ng-show="mailSent === 1"><div class="content_loader contentLoaderMailButton"></div></span>
+                <span ng-show="mailSent === 2">Inviata <i class="glyphicon glyphicon-ok"></i></span>
+                <span ng-show="mailSent === 3">Errore <i class="glyphicon glyphicon-remove"></i></span>
+            </md-button>
+        </md-dialog-actions>
+
+
+    </form>
+</md-dialog>

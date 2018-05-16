@@ -1,0 +1,418 @@
+<!--Copyright 2014-2015 Alex Benfaremo, Alessandro Chelli, Lorenzo Di Berardino, Matteo Di Sabatino-->
+
+<!---------------------------------- LICENSE --------------------------------
+-                                                                           -
+- This file is part of ApioOS.                                              -
+-                                                                           -
+- ApioOS is free software released under the GPLv2 license: you can         -
+- redistribute it and/or modify it under the terms of the GNU General       -
+- Public License version 2 as published by the Free Software Foundation.    -
+-                                                                           -
+- ApioOS is distributed in the hope that it will be useful, but             -
+- WITHOUT ANY WARRANTY; without even the implied warranty of                -
+- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the              -
+- GNU General Public License version 2 for more details.                    -
+-                                                                           -
+- To read the license either open the file COPYING.txt or                   -
+- visit <http://www.gnu.org/licenses/gpl2.txt>                              -
+-                                                                           -
+---------------------------------------------------------------------------->
+
+<html xmlns="http://www.w3.org/1999/xhtml" style="display: block; height: 100%; width: 100%;">
+
+<head>
+  <style>
+    @font-face {
+      font-family: InterstateUltraBlackCondensed;
+      src: url("/applications/12/font/Interstate-UltraBlackCondensed/Interstate-UltraBlackCondensed.ttf");
+    }
+
+    @font-face {
+      font-family: Interstate-LightCondensed;
+      src: url("/applications/12/font/Interstate-LightCondensed/Interstate-LightCondensed.ttf");
+    }
+
+    @font-face {
+      font-family: SwissBTBolExt;
+      src: url("/applications/12/font/Swiss721BT/Swiss721BoldBT.ttf");
+    }
+
+    @font-face {
+      font-family: Sw721Rm;
+      src: url("/applications/12/font/Swiss721BT/Sw721Rm.ttf");
+    }
+
+    @font-face {
+      font-family: Interstate-BoldCondensed;
+      src: url("/applications/12/font/Interstate-BoldCondensed/Interstate-BoldCondensed.ttf");
+    }
+
+    .titleContent {
+      margin-top: 4%;
+      width: 80%;
+      font-size: 4.35em;
+      float: left;
+      color: #1e4c72;
+      font-family: SwissBTBolExt;
+    }
+
+    .logoContent {
+      width: 20%;
+      float: left;
+    }
+
+    .logoComfortest {
+      width: 100%;
+    }
+
+    .titleBar {
+      width: 100%;
+      margin: 0 !important;
+      padding: 3% 8% 1% 8%;
+      background-color: #e1e3e4;
+    }
+
+    .containerInfoPerson {
+      width: 100%;
+      margin: 0 !important;
+      padding: 5% 8% 1% 8%;
+    }
+
+    .generalInfo {
+      width: 35%;
+      float: left;
+      margin-right: 5%;
+    }
+
+    .posturInfo {
+      width: 60%;
+      float: left;
+    }
+
+    .titleChapter {
+      font-family: SwissBTBolExt;
+      color: #1e4c72;
+      font-size: 2.3em;
+      border-bottom: solid 3px #59c1dc;
+      padding: 0px 0px 1% 0px;
+    }
+
+    .info p {
+      font-family: Sw721Rm;
+      font-size: 1.8em;
+      color: #9a999b;
+    }
+
+    .info p span {
+      color: #0b3756 !important;
+    }
+
+    .slider {
+      height: 100%;
+      width: 20%;
+      float: left;
+    }
+
+    .height {
+      height: 30%;
+    }
+
+    .sagomaHeightUomo {
+      background-image: url(/applications/12/img/sagome/UOMO_SUPINO-min.png);
+      height: 100%;
+      width: 80%;
+      float: left;
+      background-size: 48%;
+      background-repeat: no-repeat;
+    }
+
+    .sagomaHeightDonna {
+      background-image: url("/applications/12/img/sagome/DONNA_SUPINA-min.png");
+      height: 100%;
+      width: 80%;
+      float: left;
+      background-size: 48%;
+      background-repeat: no-repeat;
+    }
+
+    .valueHeightContainer {
+      width: 20%;
+      height: 10%;
+      font-size: 2em;
+      color: #1e4c72;
+      line-height: 1em;
+    }
+
+    .posturInfo {}
+
+    .titleChapter {}
+
+    .containerSupino {
+      width: 100%;
+      height: 31%;
+    }
+
+    .containerFetale {
+      width: 100%;
+      height: 25%;
+    }
+
+    .containerFetale .descPostur {
+      padding-top: 1%;
+    }
+
+    .letto {
+      width: 33%;
+      height: 100%;
+      float: left;
+    }
+
+    .sagomaSupinoUomo {
+      width: 100%;
+      height: 100%;
+      background-image: url(/applications/12/img/sagome/UOMO_SUPINO-min.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position-x: 50%;
+    }
+
+    .sagomaSupinoDonna {
+      width: 100%;
+      height: 100%;
+      background-image: url(/applications/12/img/sagome/DONNA_SUPINA-min.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position-x: 50%;
+    }
+
+    .sagomaFetaleDxUomo {
+      width: 100%;
+      height: 100%;
+      background-image: url(/applications/12/img/sagome/UOMO_FETALE_DX-min.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position-x: 50%;
+    }
+
+    .sagomaFetaleDxDonna {
+      width: 100%;
+      height: 100%;
+      background-image: url(/applications/12/img/sagome/DONNA_FETALE_DX-min.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position-x: 50%;
+    }
+
+    .sagomaFetaleSxUomo {
+      width: 100%;
+      height: 100%;
+      background-image: url(/applications/12/img/sagome/UOMO_FETALE_SX-min.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position-x: 50%;
+    }
+
+    .sagomaFetaleSxDonna {
+      width: 100%;
+      height: 100%;
+      background-image: url(/applications/12/img/sagome/DONNA_FETALE_SX-min.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position-x: 50%;
+    }
+
+    .descPostur {
+      width: 66%;
+      height: 100%;
+      float: left;
+      padding-top: 11%;
+    }
+
+    #supinoProfile {}
+
+    .supinoProfileUomo {
+      background-image: url(/applications/12/img/sagome/UOMO_DISTESO_LETTO-min.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      margin-top: 8%;
+      height: 50%;
+      padding-top: 17%;
+    }
+
+    .supinoProfileDonna {
+      background-image: url(/applications/12/img/sagome/DONNA_DISTESA_LETTO-min.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      margin-top: 8%;
+      height: 50%;
+      padding-top: 17%;
+    }
+
+    .fetaleDxProfileUomo {
+      background-image: url(/applications/12/img/sagome/ELEMENTI_SAGOME-10-min.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      margin-top: 8%;
+      height: 100%;
+      padding-top: 18%;
+    }
+
+    .fetaleDxProfileDonna {
+      background-image: url(/applications/12/img/sagome/ELEMENTI_SAGOME-13-min.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      margin-top: 8%;
+      height: 50%;
+      padding-top: 18%;
+    }
+
+
+    .fetaleSxProfileUomo {
+      background-image: url(/applications/12/img/sagome/ELEMENTI_SAGOME-11-min.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      margin-top: 8%;
+      height: 50%;
+      padding-top: 20%;
+    }
+
+    .fetaleSxProfileDonna {
+      background-image: url(/applications/12/img/sagome/ELEMENTI_SAGOME-12-min.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      margin-top: 8%;
+      height: 50%;
+      padding-top: 20%;
+    }
+
+    .descPosturText {
+      font-family: Sw721Rm;
+      font-size: 1.2em;
+    }
+
+    .mattressTitle {
+      font-size: 3em;
+      line-height: 2.35em;
+      float: left;
+      color: #1e4c72;
+      font-family: SwissBTBolExt;
+      margin: 0;
+      border-bottom: solid 3px #59c1dc;
+      border-top: solid 3px #59c1dc;
+    }
+
+    .mattressImg {
+      padding: 0 !important;
+    }
+
+    .lordflexsLogo {
+      width: 20%;
+      float: right;
+      margin-top: 2%;
+    }
+
+    #cnvsStep1 {
+      height: 35% !important;
+    }
+
+    #cnvsStep2 {
+      height: 17% !important;
+    }
+
+    #cnvsStep3 {
+      height: 60% !important;
+    }
+
+    #svgStep1 {
+      width: 100%;
+      height: 100%;
+    }
+
+    #svgStep2 {
+      width: 100%;
+      height: 100%;
+    }
+
+    #svgStep3 {
+      width: 100%;
+      height: 100%;
+    }
+
+    .displayNone {
+      display: none;
+    }
+  </style>
+  <link id="head" rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap-sweetalert/dist/sweetalert.css" />
+
+  <link rel="stylesheet" type="text/css" href="/bower_components/morris.js/morris.css" />
+
+  <link rel="stylesheet" type="text/css" href="/bower_components/vis/dist/vis.min.css" />
+
+  <link rel="stylesheet" href="/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker3.standalone.min.css" />
+  <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
+</head>
+
+<body style="margin: 0; overflow-x: hidden; display: block; height: 100%; width: 100%;">
+  <div id="ApioApplication12" style="display: block; height: 100%; width: 100%;">
+    <div id="app" style="display: block; height: 100%; width: 100%;">
+      <div class="row" style="display: block; height: 50%; width: 100%;">
+        <div class="col-xs-12" style="display: block; height: 100%; width: 100%;">
+          <img style="width: 100%; display: block; height: 100%;">
+        </div>
+      </div>
+      <div class="row" style="display: block; height: 50%; width: 100%;">
+        <div class="col-xs-12" style="display: block; height: 100%; width: 100%;">
+          <img style="width: 100%; display: block; height: 100%;">
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script src="/bower_components/jquery/dist/jquery.js"></script>
+<script src="/bower_components/chart.js/dist/Chart.js"></script>
+
+<script src="/bower_components/later/later.js"></script>
+<script src="/bower_components/hammerjs/hammer.js"></script>
+<script src="/bower_components/jqueryui/jquery-ui.js"></script>
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/bower_components/moment/min/moment-with-locales.min.js"></script>
+<script type="text/javascript" src="/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="/bower_components/js-xlsx/dist/xlsx.full.min.js"></script>
+<script type="text/javascript" src="/bower_components/ngFileReader/vendor/jquery.FileReader.js"></script>
+<script type="text/javascript" src="/bower_components/jszip/dist/jszip.min.js"></script>
+
+<script type="text/javascript">
+  document.getElementById("app").classList.add("fullscreen");
+  var http_auth = new XMLHttpRequest();
+  http_auth.open("POST", "/apio/user/authenticate", true);
+  http_auth.setRequestHeader("Content-Type", "application/json");
+  http_auth.onreadystatechange = function () {
+    if (http_auth.readyState === 4 && http_auth.status === 200) {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function () {
+        if (xhttp.readyState === 4 && xhttp.status === 200) {
+          var scope = JSON.parse(xhttp.responseText);
+          // scope.forEach(function (x, index) {
+          //   document.querySelector('#app img:nth-child(' + (index + 1) + ')').src = x.urlDesktop
+          // })
+
+          var imgs = document.querySelectorAll('#app img')
+          scope.forEach(function (x, index) {
+            imgs[index].src = x.urlDesktop
+          })
+        };
+      }
+
+      xhttp.open("GET", "/applications/12/PDF/data.json?ts=" + new Date().getTime(), true);
+      xhttp.send();
+    };
+  }
+  http_auth.send(JSON.stringify({
+    email: "admin",
+    password: "admin",
+    rememberMe: "1"
+  }));
+</script>

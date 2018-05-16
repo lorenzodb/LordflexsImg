@@ -1,0 +1,720 @@
+<!--Copyright 2014-2015 Alex Benfaremo, Alessandro Chelli, Lorenzo Di Berardino, Matteo Di Sabatino-->
+
+<!---------------------------------- LICENSE --------------------------------
+-                                                                           -
+- This file is part of ApioOS.                                              -
+-                                                                           -
+- ApioOS is free software released under the GPLv2 license: you can         -
+- redistribute it and/or modify it under the terms of the GNU General       -
+- Public License version 2 as published by the Free Software Foundation.    -
+-                                                                           -
+- ApioOS is distributed in the hope that it will be useful, but             -
+- WITHOUT ANY WARRANTY; without even the implied warranty of                -
+- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the              -
+- GNU General Public License version 2 for more details.                    -
+-                                                                           -
+- To read the license either open the file COPYING.txt or                   -
+- visit <http://www.gnu.org/licenses/gpl2.txt>                              -
+-                                                                           -
+---------------------------------------------------------------------------->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <style>
+	    
+    </style>
+    <!--<link id="favicon" rel="shortcut icon" type="image/x-icon" href="public/apio_assets/img/favicon.ico"/>-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=0, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="yes"/>
+    <meta name="theme-color" content="#ffffff">
+    <title>ApioOS</title>
+    <link id="favicon" rel="apple-touch-icon" href="html/apple-touch-icon.png"/>
+    <link id="favicon1" rel="apple-touch-icon-precomposed" href="html/apple-touch-icon.png"/>
+    <link id="head" rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap-sweetalert/dist/sweetalert.css"/>
+
+    <link rel="stylesheet" type="text/css" href="/bower_components/morris.js/morris.css"/>
+
+    <link rel="stylesheet" type="text/css" href="/bower_components/vis/dist/vis.min.css"/>
+
+    <link rel="stylesheet"
+          href="/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker3.standalone.min.css"/>
+    <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
+    <link rel="stylesheet" href="/stylesheets/fontApio.css"/>
+    <link rel="stylesheet" href="/stylesheets/app2.css"/>
+    <link rel="stylesheet" href="/stylesheets/app2_media_query_992_1199.css"/>
+    <link rel="stylesheet" href="/stylesheets/app2_media_query_768_991.css"/>
+    <link rel="stylesheet" href="/stylesheets/app2_media_query_480_767.css"/>
+    <link rel="stylesheet" href="/stylesheets/app2_media_query_320_479.css"/>
+    <link rel="stylesheet" href="/stylesheets/app2_media_query_1200.css"/>
+
+    <link rel="stylesheet" href="/bower_components/material-design-lite/material.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
+</head>
+<body>
+<div id="ApioApplication12"
+     style="padding: 10px; background: linear-gradient(#284679, #001548);">
+    <div style="display: block;">
+
+        <div id="app" style="display: block; height:100%;">
+            <!--<div style="width: 100%; height: 570px; margin: auto;">-->
+            <!--<div id="graph"></div>-->
+            <!--</div>-->
+            <!-- TODO mettere margin: 0; alla row, correggere allineamento svg -->
+            <div class="row" style="height:100%; margin-top:3%;">
+
+                <div class="col-xs-6">
+                    <div class="row">
+
+                        <div id="sagomaManichino" class="sagoma" style=""></div>
+                        <div style="display:none;" id="graph3d"></div>
+                        <svg id="sagomaInterattiva" width="100%" height="500px">
+
+                        </svg>
+
+
+                    </div>
+                    <!--verfifica che sia abilitata la parte Javasrctipt-->
+                    <!--<div class="row">
+                       <div id="graph"></div>
+                    </div>-->
+                </div>
+                <div class="col-xs-6" style="height:100%">
+                    <!--verfifica che sia abilitata la parte Javasrctipt-->
+                    <!--<div class="row">
+                        <div id="graph2d"></div>
+                    </div>-->
+                    <div class="row">
+                        <div id="info">
+                            <div id="peso" class="infoCell">
+                                <div style="width:100%; text-align:center; margin-top:1%; padding-bottom: 3%;">
+                                    <p id="peso">
+                                        Peso</p></div>
+                                <!--<p id="taraPeso">Tara = {{object.properties.tara}}</p>-->
+                                <div style="width:40%; margin-left:auto; margin-right:auto; margin-top:-15%;">
+                                    <svg id="animatedPeso" viewbox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="45" fill="none"/>
+                                        <path id="progressPeso" stroke-linecap="round" stroke-width="5" stroke="#fff"
+                                              fill="none"
+                                              d="M50 10
+											           a 40 40 0 0 1 0 80
+											           a 40 40 0 0 1 0 -80">
+                                        </path>
+                                        <text id="countPeso" x="50" y="50" text-anchor="middle" dy="7" font-size="20"
+                                              fill="#fff"></text>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div id="cella2" class="infoCell">
+                                <div style="width:100%; text-align:center; margin-top:1%; padding-bottom: 3%;">
+                                    <p
+                                            id="altezza">Altezza</p></div>
+                                <!--<p id="taraPeso">Tara = {{object.properties.tara}}</p>-->
+                                <div style="width:40%; margin-left:auto; margin-right:auto; margin-top:-15%;">
+                                    <svg id="animatedAltezza" viewbox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="45" fill="none"/>
+                                        <path id="progressAltezza" stroke-linecap="round" stroke-width="5" stroke="#fff"
+                                              fill="none"
+                                              d="M50 10
+											           a 40 40 0 0 1 0 80
+											           a 40 40 0 0 1 0 -80">
+                                        </path>
+                                        <text id="countAltezza" x="50" y="50" text-anchor="middle" dy="7" font-size="20"
+                                              fill="#fff"></text>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div id="cella3" class="infoCell">
+                                <div style="width:100%; text-align:center; margin-top:1%; padding-bottom: 3%;">
+                                    <p id="sesso">
+                                        Sesso</p></div>
+                                <!--<p id="taraPeso">Tara = {{object.properties.tara}}</p>-->
+                                <div class="uomo" style="">
+                                    <img id="imgGender" style="width: 100%;"
+                                         src="/applications/12/img/uomo.png"></div>
+                            </div>
+                            <div id="cella4" class="infoCell">
+                                <div style="width:100%; text-align:center; margin-top:1%; padding-bottom: 3%;">
+                                    <p id="imc">
+                                        IMC</p></div>
+                                <!--<p id="taraPeso">Tara = {{object.properties.tara}}</p>-->
+                                <div style="width:40%; margin-left:auto; margin-right:auto; margin-top:-15%;">
+                                    <svg id="animatedIMC" viewbox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="45" fill="none"/>
+                                        <path id="progressIMC" stroke-linecap="round" stroke-width="5" stroke="#fff"
+                                              fill="none"
+                                              d="M50 10
+											           a 40 40 0 0 1 0 80
+											           a 40 40 0 0 1 0 -80">
+                                        </path>
+                                        <text id="countIMC" x="50" y="50" text-anchor="middle" dy="7" font-size="20"
+                                              fill="#fff"></text>
+                                    </svg>
+                                </div>
+                            </div>
+
+
+                            <!--<div id="cella5" class="infoCell">
+                                <div id="buttonNewTest">
+                                    <div class="button">
+                                        <div class="ceneterButton">
+                                            <md-button class="md-primary md-accent md-raised" style="width:149px;">nuova Prova</md-button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>-->
+
+
+                        </div>
+
+                    </div>
+                    <div class="row" style=" height:100%;">
+                        <div style="width:100%; height:100%; position:absolute;">
+                            <div id="profilo" class="profilo prfiloFrontale"></div>
+                        </div>
+                        <div style="width: 562px; margin-top: 33%;">
+                            <!--<div style="width: 80%; margin-top: 33%;">-->
+                            <canvas id="graficoProfilo" style="width:100%; height:100px;"></canvas>
+                        </div>
+
+                        <!-- WHITE BOX -->
+
+                        <div id="box_container"
+                             style="background-color: white;height:210px;width:80%;margin-left:20px;display:flex;justify-content:center;align-items:center;margin-top:50px;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                            <p id="description"
+                               style="font-size:18px;color:black;margin-bottom:0;padding-right:10px;padding-left:27px">
+                                Prova prova</p>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!--<textbox propertyname="mat" label="mat" style="display: none;"></textbox>
+            <textbox propertyname="pes" label="pes" style="display: none;"></textbox>
+            <textbox propertyname="tara" label="tara" style="display: none;"></textbox>-->
+
+            <!--<div>{{peso1}} <br> {{peso2}} <br> {{peso3}} <br> {{peso4}}</div>-->
+        </div>
+    </div>
+</div>
+</body>
+
+
+<script src="/bower_components/jquery/dist/jquery.js"></script>
+<script src="/bower_components/angular/angular.js"></script>
+
+
+<script src="/bower_components/chart.js/dist/Chart.js"></script>
+
+<script src="/bower_components/later/later.js"></script>
+<script src="/bower_components/angular-route/angular-route.js"></script>
+<script src="/bower_components/hammerjs/hammer.js"></script>
+<script src="/bower_components/jqueryui/jquery-ui.js"></script>
+<script src="/bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+<script src="/bower_components/angular-css-injector/angular-css-injector.js"></script>
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/bower_components/moment/min/moment-with-locales.min.js"></script>
+<script type="text/javascript"
+        src="/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript"
+        src="/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="/bower_components/bootstrap-sweetalert/dist/sweetalert.js"></script>
+<script type="text/javascript" src="/bower_components/angular-h-sweetalert/dist/ngSweetAlert.js"></script>
+<script type="text/javascript" src="/bower_components/angular-file-upload/angular-file-upload.min.js"></script>
+<script type="text/javascript" src="/bower_components/file-saver.js/FileSaver.js"></script>
+<script type="text/javascript" src="/bower_components/angular-file-saver/dist/angular-file-saver.min.js"></script>
+<script type="text/javascript" src="/bower_components/js-xlsx/dist/xlsx.full.min.js"></script>
+<script type="text/javascript" src="/bower_components/ngFileReader/vendor/jquery.FileReader.js"></script>
+<script type="text/javascript" src="/bower_components/ngFileReader/src/ngFileReader.js"></script>
+<script type="text/javascript" src="/bower_components/jszip/dist/jszip.min.js"></script>
+
+<script type="text/javascript" src="/bower_components/plotlyjs/plotly.js" charset="utf-8"></script>
+
+<script type="text/javascript" src="/bower_components/raphael/raphael.min.js"></script>
+<script type="text/javascript" src="/bower_components/morris.js/morris.min.js"></script>
+
+<script type="text/javascript" src="/bower_components/vis/dist/vis.min.js"></script>
+<script src="/bower_components/Snap.svg/dist/snap.svg-min.js"></script>
+<!--<script src="/bower_components/Snap.js/snap.min.js"></script>-->
+<script src="/bower_components/angular-aria/angular-aria.js"></script>
+<script src="/bower_components/angular-animate/angular-animate.js"></script>
+<script src="/bower_components/angular-material/angular-material.js"></script>
+<script src="/javascripts/jquery-cron/cron/jquery-cron.js"></script>
+<!--<script src="apioProperties/Charts/charts.js"></script>-->
+<!--<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3.21&libraries=places&sensor=false"></script>-->
+<script src="/bower_components/material-design-lite/material.min.js"></script>
+
+
+<script type="text/javascript">
+    document.getElementById("app").classList.add("fullscreen");
+    var correzzioneMatrixSens = 7;
+
+    var http_auth = new XMLHttpRequest();
+    http_auth.open("POST", "/apio/user/authenticate", true);
+    http_auth.setRequestHeader("Content-Type", "application/json");
+    http_auth.onreadystatechange = function () {
+        if (http_auth.readyState === 4 && http_auth.status === 200) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (xhttp.readyState === 4 && xhttp.status === 200) {
+                    var scope = JSON.parse(xhttp.responseText);
+
+                    scope.matrixHumanSvg = {};
+
+                    var descriptionList = ["Mappa dei punti di pressione rilevati e curva di affondamento per la posizione Supino", "Mappa dei punti di pressione rilevati e curva di affondamento per la posizione Fetale Sinistra", "Mappa dei punti di pressione rilevati e curva di affondamento per la posizione Fetale Destra"];
+
+                    var setCustomerInfo = function (info) {
+                        document.getElementById('peso').innerHTML = info.weight;
+                        document.getElementById('altezza').innerHTML = info.height;
+                        document.getElementById('sesso').innerHTML = info.gender;
+                        document.getElementById('imc').innerHTML = info.imc;
+                        document.getElementById('posizione').innerHTML = info.position;
+
+                    };
+
+                    var setValueCustomerInfo = function (info) {
+                        document.getElementById('description').innerHTML = descriptionList[scope.description];
+
+                        document.getElementById('imgGender').setAttribute('src', '/applications/12/img/' + info.gender + '.png');
+                        document.getElementById('imgGender').parentNode.setAttribute('class', info.gender);
+
+                        var count = $(('#countPeso'));
+                        var s = Snap('#animatedPeso');
+                        console.log(s);
+                        var progress = s.select('#progressPeso');
+                        progress.attr({strokeDasharray: '0, 251.2'});
+                        count.text(Number(info.weight).toFixed(0) + "kg");
+                        progress.attr({'stroke-dasharray': (Number(info.weight).toFixed(2) * 251.2) / 100 + ',251.2'});
+
+                        var count = $(('#countAltezza'));
+                        var s = Snap('#animatedAltezza');
+                        console.log(s);
+                        var progress = s.select('#progressAltezza');
+                        progress.attr({strokeDasharray: '0, 251.2'});
+                        count.text(Number(info.height).toFixed(0) + "cm");
+                        progress.attr({'stroke-dasharray': ((Number(info.height).toFixed(2) - 100) * 251.2) / 100 + ',251.2'});
+
+                        var count = $(('#countIMC'));
+                        var s = Snap('#animatedIMC');
+                        console.log(s);
+                        var progress = s.select('#progressIMC');
+                        progress.attr({strokeDasharray: '0, 251.2'});
+                        count.text(Number(info.imc).toFixed(2));
+                        progress.attr({'stroke-dasharray': (Number(info.imc).toFixed(2) * 251.2) / 100 + ',251.2'});
+
+                    };
+                    setValueCustomerInfo(scope.customerCare);
+
+                    var sagomaBackground = document.getElementById('sagomaManichino');
+                    var profiloBackground = document.getElementById('profilo');
+                    if (scope.positionDetected === 0) {
+                        sagomaBackground.classList.remove('sagomaLeft');
+                        sagomaBackground.classList.add('sagomaRight');
+
+                        profiloBackground.classList.remove('prfiloFrontale');
+                        profiloBackground.classList.add('prfiloLaterale');
+                    } 
+                    else if (scope.positionDetected === 1) {
+                        sagomaBackground.classList.add('sagomaLeft');
+                        sagomaBackground.classList.remove('sagomaRight');
+
+                        profiloBackground.classList.remove('prfiloFrontale');
+                        profiloBackground.classList.add('prfiloLaterale');
+
+                    } 
+                    else if (scope.positionDetected === 2) {
+                        sagomaBackground.classList.remove('sagomaRight');
+                        sagomaBackground.classList.remove('sagomaLeft');
+
+                        profiloBackground.classList.remove('prfiloLaterale');
+                        profiloBackground.classList.add('prfiloFrontale');
+
+                    }
+
+                    scope.drawingOk = false;
+                    scope.altezza = 176;
+                    scope.imc = 0;
+                    scope.peso = 0;
+                    
+                    var myChart = undefined;
+
+                    var arrayTemplate = {
+                        numeroRighe: 14,
+                        numeroColonne: 7,
+                        pixelYStartPosition: 140,
+                        pixelXStartPosition: 303,
+                        distanceBetween: 17
+
+                    };
+
+                    var structureProfileData = {
+                        type: 'line',
+                        maintainAspectRatio: false,
+                        data: {
+                            labels: ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+                            datasets: [
+                                {
+                                    label: "",
+                                    fill: true,
+                                    lineTension: 0.5,
+                                    backgroundColor: "#005597",
+                                    borderColor: "rgba(75,192,192,1)",
+                                    borderCapStyle: 'butt',
+                                    borderDash: [],
+                                    borderDashOffset: 0.0,
+                                    borderJoinStyle: 'miter',
+                                    pointBorderColor: "rgba(75,192,192,1)",
+                                    pointBackgroundColor: "#fff",
+                                    pointBorderWidth: 1,
+                                    pointHoverRadius: 5,
+                                    pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                                    pointHoverBorderColor: "rgba(220,220,220,1)",
+                                    pointHoverBorderWidth: 2,
+                                    pointRadius: 1,
+                                    pointHitRadius: 10,
+                                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -7],
+                                    spanGaps: true
+                                }
+                            ]
+                        }
+                    };
+                    
+                    var arrayData = [];
+
+                    var rows = [];
+
+                    var generateProfilData = function (array) {
+                        var profileArray = [];
+                        var rowNumber = 0;
+                        for (var s in array) {
+                            if (s === 0) {
+                                array[s] = 0;
+                            }
+                            //console.log("array[s]",array[s].z);
+                            if ((1 + Number(s)) % 7 === 0) {
+                                //console.log("verifica array",Number(s)-3)
+                                profileArray[13 - rowNumber] = Number(array[Number(s) - 3].z);
+                                rowNumber++;
+                            } else {
+                                /*if(array[s].z>array[Number(s)+1].z){
+
+                                 profileArray[13-rowNumber] = Number(array[s].z);
+                                 } else {
+                                 profileArray[13-rowNumber] = Number(array[Number(s)+1].z);
+                                 }*/
+                            }
+                            //console.log("1+Number(s))",1+Number(s));
+                            //console.log("row number",rowNumber);
+                        }
+                        return profileArray;
+                    };
+
+                    var generateProfilGraph = function (pointArray) {
+
+                        var dataToSet = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+                        for (var s in pointArray) {
+                            //console.log("for generateProfilGraph ",pointArray[s]);
+                            if (pointArray[s] === 0) {
+                                dataToSet[4 + Number(s)] = pointArray[s];
+                            } else {
+                                dataToSet[5 + Number(s)] = ((-pointArray[s]) / correzzioneMatrixSens);
+                            }
+
+                        }
+
+                        //console.log("dataToSet", dataToSet);
+
+                        //structureProfileData.data.datasets[0].data = dataToSet;
+
+                        if (myChart) {
+                            myChart.data.datasets[0].data = dataToSet;
+                            //console.log("update new dataSet");
+                            myChart.updateDatasets();
+                            myChart.render(1, 1);
+                            //console.log("updated", myChart);
+
+
+                        }
+                    };
+
+                    var normalizeData = function (ref) {
+                        // console.log('ref', ref);
+                        var base = 0;
+                        var counter = 0;
+
+                        var tempArrayData = [];
+
+                        //console.log("numero totale righe normalize", arrayTemplate.numeroRighe);
+                        //console.log("numero totale colonne normalize", arrayTemplate.numeroColonne);
+
+                        for (var x = 0; x < arrayTemplate.numeroRighe; x++) {
+                            //console.log("riga normalize", x);
+
+                            for (var y = 0; y < arrayTemplate.numeroColonne; y++) {
+                                //console.log("colonna normalize", y);
+                                var value = 0;
+                                if (x % 2 === 0) {
+                                    if (y % 2 === 0) {
+                                        //console.log('colonna pari riga pari tempArrayData[counter] != undefined')
+                                        if (typeof ref[counter / 2] !== 'undefined' && Number(ref[counter / 2].replace(",", ".")) > tolleranza) {
+                                            value = Number(ref[counter / 2].replace(",", "."));
+                                        } else {
+                                            value = 0;
+                                        }
+                                        tempArrayData[counter] = {
+                                            x: x,
+                                            y: y,
+                                            z: Math.abs(value)
+                                            //style: Math.abs(value-zMassimo)
+                                        }
+                                    } else if (y % 2 !== 0) {
+                                        //console.log('colonna pari riga dipari tempArrayData[counter] != undefined')
+                                        var middle = [];
+                                        if (typeof ref[(counter - 1) / 2] !== 'undefined') {
+                                            middle.push(Number(ref[(counter - 1) / 2].replace(",", ".")));
+                                        }
+                                        if (typeof ref[(counter + 1) / 2] !== 'undefined') {
+                                            middle.push(Number(ref[(counter + 1) / 2].replace(",", ".")));
+                                        }
+                                        if (typeof ref[(counter - 7) / 2] !== 'undefined') {
+                                            middle.push(Number(ref[(counter - 7) / 2].replace(",", ".")));
+                                        }
+                                        if (typeof ref[(counter + 7) / 2] !== 'undefined') {
+                                            middle.push(Number(ref[(counter + 7) / 2].replace(",", ".")));
+                                        }
+                                        //console.log('middle 4',middle)
+                                        //console.log('counter',counter)
+                                        for (var s in middle) {
+                                            value += middle[s]
+                                        }
+
+                                        value = value / middle.length;
+                                        if (value < tolleranza) {
+                                            value = 0;
+                                        }
+                                        tempArrayData[counter] = {
+                                            x: x,
+                                            y: y,
+                                            z: Math.abs(value)
+                                            //style: Math.abs(value-zMassimo)
+                                        };
+                                    }
+                                }
+                                else {
+                                    if (y % 2 !== 0) {
+                                        if (typeof ref[counter / 2] !== 'undefined' && Number(ref[counter / 2].replace(",", ".")) > tolleranza) {
+                                            value = Number(ref[counter / 2].replace(",", "."));
+                                        } else {
+                                            value = 0;
+                                        }
+                                        tempArrayData[counter] = {
+                                            x: x,
+                                            y: y,
+                                            z: Math.abs(value)
+                                            //style: Math.abs(value-zMassimo)
+                                        }
+                                    } else if (y % 2 === 0) {
+                                        var middle = [];
+                                        if (counter % 7 === 0) {
+                                            if (typeof ref[(counter + 1) / 2] !== 'undefined') {
+                                                middle.push(Number(ref[(counter + 1) / 2].replace(",", ".")));
+                                            }
+                                        } else if (counter % 7 === 6) {
+                                            if (typeof ref[(counter - 1) / 2] !== 'undefined') {
+                                                middle.push(Number(ref[(counter - 1) / 2].replace(",", ".")));
+                                            }
+                                        }
+
+                                        if (typeof ref[(counter - 7) / 2] !== 'undefined') {
+                                            middle.push(Number(ref[(counter - 7) / 2].replace(",", ".")));
+                                        }
+                                        if (typeof ref[(counter + 7) / 2] !== 'undefined') {
+                                            middle.push(Number(ref[(counter + 7) / 2].replace(",", ".")));
+                                        }
+                                        //console.log('middle 3',middle)
+                                        //console.log('counter',counter)
+                                        //console.log('value',value);
+                                        for (var s in middle) {
+                                            value += middle[s]
+                                        }
+                                        value = value / middle.length;
+                                        if (value < tolleranza) {
+                                            value = 0;
+                                        }
+                                        tempArrayData[counter] = {
+                                            x: x,
+                                            y: y,
+                                            z: Math.abs(value)
+                                            //style: Math.abs(value-zMassimo)
+                                        };
+                                    }
+                                }
+
+
+                                counter++;
+                            }
+                            //console.log('normalize return'/*,tempArrayData*/);
+
+                        }
+                        scope.lastMatrixData = tempArrayData;
+                        return tempArrayData;
+                    };
+
+                    var detectHumanPositionOnTheBed = function (matrix) {
+
+                        var position = "top";
+                        var thisRow = 1;
+                        var thisColl = 0;
+
+
+                        var leftIndex = 0;
+                        var rightIndex = 0;
+
+                        for (var s in matrix) {
+                            thisColl++;
+                            var n = s + 1;
+
+                            //console.log("colonna numero", thisColl);
+
+                            if (thisColl <= 3) {
+                                //console.log("sommo a sinistra");
+                                leftIndex = leftIndex + matrix[s].z;
+                            } else if (thisColl === 4) {
+                                //console.log("sommo a metà");
+                                leftIndex = leftIndex + matrix[s].z;
+                                rightIndex = rightIndex + matrix[s].z;
+                            } else if (thisColl > 4) {
+                                //console.log("sommo a destra");
+                                rightIndex = rightIndex + matrix[s].z;
+                            }
+
+                            //console.log("colonna valore", matrix[s].z);
+
+                            if (n % 7 === 0) {
+                                thisColl = 0;
+                                thisRow++;
+                            }
+                        }
+
+                        //console.log("left and right vale", leftIndex, rightIndex);
+                        if (leftIndex > rightIndex && Math.abs(leftIndex - rightIndex) > 6500) {
+                            //console.log("sei a sinistra return 0");
+                            return 0;
+                        } else if (rightIndex > leftIndex && Math.abs(leftIndex - rightIndex) > 6500) {
+                            //console.log("sei a destra return 1");
+                            return 1;
+                        } else {
+                            //console.log("sei sul dorso return 3");
+                            return 2;
+                        }
+                    };
+
+                    var createSvgMatrixHumanGraph = function () {
+                        //console.log("devo generare una matrice di: " + arrayTemplate.numeroRighe + "righe e:" + arrayTemplate.numeroColonne + "colonne");
+                        var tempSvg = document.getElementById('sagomaInterattiva');
+                        for (var x = 0; x < arrayTemplate.numeroRighe; x++) {
+                            console.log("genero righe svg", x);
+                            var g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+                            g.setAttribute('id', 'riga' + (x + 1));
+                            tempSvg.appendChild(g);
+
+                            //calcolo posizione Y
+                            var cy = arrayTemplate.pixelYStartPosition + ( arrayTemplate.distanceBetween * x );
+                            scope.matrixHumanSvg["\"" + x + "\""] = {};
+                            for (var y = 0; y < arrayTemplate.numeroColonne; y++) {
+
+                                //console.log("genero colonne svg", y)
+
+                                var value = 0;
+
+
+                                tempSvg.appendChild(g);
+
+                                //calcolo posizione x
+                                var cx = arrayTemplate.pixelXStartPosition + ( arrayTemplate.distanceBetween * y );
+
+                                var newCircle = document.createElementNS("http://www.w3.org/2000/svg", 'circle');
+                                newCircle.setAttribute('id', "elementMatrix" + (arrayTemplate.numeroRighe - 1 - x) + y);
+                                newCircle.setAttribute('cx', cx);
+                                newCircle.setAttribute('cy', cy);
+                                newCircle.setAttribute('r', 1);
+                                newCircle.setAttribute('stroke', 'green');
+                                newCircle.setAttribute('stroke-width', 1);
+                                newCircle.setAttribute('fill', 'yellow');
+                                g.appendChild(newCircle);
+
+
+                                scope.matrixHumanSvg["\"" + x + "\""]["\"" + y + "\""] = {
+                                    r: 1,
+                                    stroke: 'green',
+                                    strokeWidth: 1,
+                                    fill: 'yellow'
+
+                                }
+
+                            }
+
+                        }
+                        //console.log('scope.matrixHumanSvg' , scope.matrixHumanSvg);
+                    };
+
+                    var updateSvgMatrixHumanGraph = function (matrixUpdate) {
+                        var countRow = 0;
+                        var countColl = 0;
+                        var conunterTemp = 0;
+                        for (var s in matrixUpdate) {
+                            conunterTemp++;
+
+
+                            document.getElementById('elementMatrix' + countRow + countColl).setAttribute('r', matrixUpdate[s].z / correzzioneMatrixSens);
+                            //console.log("selezioni l'elemento: elementMatrix " + countRow + countColl);
+
+                            if (conunterTemp !== 0 && conunterTemp % 7 === 0) {
+                                countRow++;
+                                countColl = 0;
+                            } else {
+                                countColl++;
+                            }
+
+
+                        }
+                    };
+
+                    //INIZIO NUOVO SVG SAGOMA
+                    createSvgMatrixHumanGraph();
+                    updateSvgMatrixHumanGraph(scope.lastMatrix);
+
+                    scope.drawingOk = true;
+
+                    var elem = document.getElementsByClassName("topAppApplication")[0];
+                    if (elem) {
+	                    var ctx = document.getElementById("graficoProfilo").getContext("2d");
+	                    myChart = new Chart(ctx, structureProfileData);
+	                    console.log("myChart", myChart);
+	
+	                    generateProfilGraph(scope.lastProfile);
+					}
+            };
+
+            xhttp.open("GET", "/applications/12/PDF/data.json", true);
+            xhttp.send();
+        }
+    };
+
+    http_auth.send(JSON.stringify({
+        email: "admin",
+        password: "admin",
+        rememberMe: "1"
+    }));
+</script>

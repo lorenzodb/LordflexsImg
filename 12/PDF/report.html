@@ -1,0 +1,1049 @@
+<!--Copyright 2014-2015 Alex Benfaremo, Alessandro Chelli, Lorenzo Di Berardino, Matteo Di Sabatino-->
+
+<!---------------------------------- LICENSE --------------------------------
+-                                                                           -
+- This file is part of ApioOS.                                              -
+-                                                                           -
+- ApioOS is free software released under the GPLv2 license: you can         -
+- redistribute it and/or modify it under the terms of the GNU General       -
+- Public License version 2 as published by the Free Software Foundation.    -
+-                                                                           -
+- ApioOS is distributed in the hope that it will be useful, but             -
+- WITHOUT ANY WARRANTY; without even the implied warranty of                -
+- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the              -
+- GNU General Public License version 2 for more details.                    -
+-                                                                           -
+- To read the license either open the file COPYING.txt or                   -
+- visit <http://www.gnu.org/licenses/gpl2.txt>                              -
+-                                                                           -
+---------------------------------------------------------------------------->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <style>
+    @font-face {
+      font-family: InterstateUltraBlackCondensed;
+      src: url("/applications/12/font/Interstate-UltraBlackCondensed/Interstate-UltraBlackCondensed.ttf");
+    }
+
+    @font-face {
+      font-family: Interstate-LightCondensed;
+      src: url("/applications/12/font/Interstate-LightCondensed/Interstate-LightCondensed.ttf");
+    }
+
+    @font-face {
+      font-family: SwissBTBolExt;
+      src: url("/applications/12/font/Swiss721BT/Swiss721BoldBT.ttf");
+    }
+
+    @font-face {
+      font-family: Sw721Rm;
+      src: url("/applications/12/font/Swiss721BT/Sw721Rm.ttf");
+    }
+
+    @font-face {
+      font-family: Interstate-BoldCondensed;
+      src: url("/applications/12/font/Interstate-BoldCondensed/Interstate-BoldCondensed.ttf");
+    }
+
+    .titleContent {
+      margin-top: 4%;
+      width: 80%;
+      font-size: 4.35em;
+      float: left;
+      color: #1e4c72;
+      font-family: SwissBTBolExt;
+    }
+
+    .logoContent {
+      width: 20%;
+      float: left;
+    }
+
+    .logoComfortest {
+      width: 100%;
+    }
+
+    .titleBar {
+      width: 100%;
+      margin: 0 !important;
+      padding: 3% 8% 1% 8%;
+      background-color: #e1e3e4;
+    }
+
+    .containerInfoPerson {
+      width: 100%;
+      margin: 0 !important;
+      padding: 5% 8% 1% 8%;
+    }
+
+    .generalInfo {
+      width: 35%;
+      float: left;
+      margin-right: 5%;
+    }
+
+    .posturInfo {
+      width: 60%;
+      float: left;
+    }
+
+    .titleChapter {
+      font-family: SwissBTBolExt;
+      color: #1e4c72;
+      font-size: 2.3em;
+      border-bottom: solid 3px #59c1dc;
+      padding: 0px 0px 1% 0px;
+    }
+
+    .info p {
+      font-family: Sw721Rm;
+      font-size: 1.8em;
+      color: #9a999b;
+    }
+
+    .info p span {
+      color: #0b3756 !important;
+    }
+
+    .slider {
+      height: 100%;
+      width: 20%;
+      float: left;
+    }
+
+    .height {
+      height: 540px;
+    }
+
+    .sagomaHeightUomo {
+      background-image: url(/applications/12/img/sagome/UOMO_SUPINO-min.png);
+      height: 100%;
+      width: 80%;
+      float: left;
+      background-size: 48%;
+      background-repeat: no-repeat;
+    }
+
+    .sagomaHeightDonna {
+      background-image: url("/applications/12/img/sagome/DONNA_SUPINA-min.png");
+      height: 100%;
+      width: 80%;
+      float: left;
+      background-size: 42%;
+      background-repeat: no-repeat;
+    }
+
+    .valueHeightContainer {
+      width: 100%;
+      height: 10%;
+      font-size: 2em;
+      color: #1e4c72;
+      line-height: 1em;
+    }
+
+    .posturInfo {}
+
+    .titleChapter {}
+
+    .containerSupino {
+      width: 100%;
+      height: 700px;
+    }
+
+    .containerFetale {
+      width: 100%;
+      height: 500px;
+    }
+
+    .containerFetale .descPostur {
+      padding-top: 1%;
+    }
+
+    .letto {
+      width: 33%;
+      height: 442px;
+      float: left;
+    }
+
+    .sagomaSupinoUomo {
+      width: 100%;
+      height: 600px;
+      background-image: url(/applications/12/img/sagome/UOMO_SUPINO-min.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position-x: 50%;
+    }
+
+    .sagomaSupinoDonna {
+      width: 100%;
+      height: 650px;
+      background-image: url(/applications/12/img/sagome/DONNA_SUPINA-min.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position-x: 50%;
+    }
+
+    .sagomaFetaleDxUomo {
+      width: 100%;
+      height: 100%;
+      background-image: url(/applications/12/img/sagome/UOMO_FETALE_DX-min.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position-x: 50%;
+    }
+
+    .sagomaFetaleDxDonna {
+      width: 100%;
+      height: 100%;
+      background-image: url(/applications/12/img/sagome/DONNA_FETALE_DX-min.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position-x: 50%;
+    }
+
+    .sagomaFetaleSxUomo {
+      width: 100%;
+      height: 100%;
+      background-image: url(/applications/12/img/sagome/UOMO_FETALE_SX-min.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position-x: 50%;
+    }
+
+    .sagomaFetaleSxDonna {
+      width: 100%;
+      height: 100%;
+      background-image: url(/applications/12/img/sagome/DONNA_FETALE_SX-min.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position-x: 50%;
+    }
+
+    .descPostur {
+      width: 66%;
+      height: 500px;
+      float: left;
+      padding-top: 11%;
+    }
+
+    #supinoProfile {}
+
+    .supinoProfileUomo {
+      background-image: url(/applications/12/img/sagome/UOMO_DISTESO_LETTO-min.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      margin-top: 8%;
+      height: 400px;
+      padding-top: 17%;
+    }
+
+    .supinoProfileDonna {
+      background-image: url(/applications/12/img/sagome/DONNA_DISTESA_LETTO-min.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      margin-top: 8%;
+      height: 400px;
+      padding-top: 17%;
+    }
+
+    .fetaleDxProfileUomo {
+      background-image: url(/applications/12/img/sagome/ELEMENTI_SAGOME-10-min.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      margin-top: 8%;
+      height: 450px;
+      padding-top: 18%;
+    }
+
+    .fetaleDxProfileDonna {
+      background-image: url(/applications/12/img/sagome/ELEMENTI_SAGOME-13-min.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      margin-top: 8%;
+      height: 450px;
+      padding-top: 18%;
+    }
+
+
+    .fetaleSxProfileUomo {
+      background-image: url(/applications/12/img/sagome/ELEMENTI_SAGOME-11-min.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      margin-top: 8%;
+      height: 50%;
+      padding-top: 20%;
+    }
+
+    .fetaleSxProfileDonna {
+      background-image: url(/applications/12/img/sagome/ELEMENTI_SAGOME-12-min.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      margin-top: 8%;
+      height: 50%;
+      padding-top: 20%;
+    }
+
+    .descPosturText {
+      font-family: Sw721Rm;
+      font-size: 1.2em;
+    }
+
+    .mattressTitle {
+      font-size: 3em;
+      line-height: 2.35em;
+      width: 100%;
+      float: left;
+      color: #1e4c72;
+      font-family: SwissBTBolExt;
+      margin: 0;
+      border-bottom: solid 3px #59c1dc;
+      border-top: solid 3px #59c1dc;
+    }
+
+    .mattressImg {
+      padding: 0 !important;
+    }
+
+    .lordflexsLogo {
+      width: 20%;
+      float: right;
+      margin-top: 1%;
+    }
+
+    #cnvsStep1 {
+      height: 65px !important;
+    }
+
+    #cnvsStep2 {
+      height: 65px !important;
+    }
+
+    #cnvsStep3 {
+      height: 65px !important;
+    }
+
+    #svgStep1 {
+      width: 100%;
+      height: 100%;
+    }
+
+    #svgStep2 {
+      width: 100%;
+      height: 100%;
+    }
+
+    #svgStep3 {
+      width: 100%;
+      height: 100%;
+    }
+
+    .displayNone {
+      display: none;
+    }
+    .slider input[type='range']{
+		transform: rotate(-90deg);
+		-webkit-transform: rotate(-90deg);
+	    width: 518px;
+	    height: 2px;
+	    -webkit-transform-origin: 279px 243px;
+	    transform-origin: 279px 243px;
+	    -webkit-appearance: none;
+	    appearance: none;
+	    outline: none;
+	    background-color: black;
+	}
+	.slider input[type='range']::-webkit-slider-thumb {
+	    -webkit-appearance: none; /* Override default look */
+	    appearance: none;
+	    width: 25px; /* Set a specific slider handle width */
+	    height: 25px; /* Slider handle height */
+	    border-radius: 25px;
+	    background-color: rgba(11, 55, 87, 1); /* Green background */
+	    cursor: pointer; /* Cursor on hover */
+	}
+  </style>
+  <link id="head" rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap-sweetalert/dist/sweetalert.css" />
+
+  <link rel="stylesheet" type="text/css" href="/bower_components/morris.js/morris.css" />
+
+  <link rel="stylesheet" type="text/css" href="/bower_components/vis/dist/vis.min.css" />
+
+  <link rel="stylesheet" href="/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker3.standalone.min.css" />
+  <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
+</head>
+
+<body style="margin: 0; height: 1754px; overflow-x: hidden;">
+  <!-- <body style="margin: 0; overflow-x: hidden;"> -->
+  <div id="ApioApplication12" style="display: block;">
+    <div id="app" style="display: block; height:100%;">
+      <div class="row titleBar">
+        <div class="titleContent">RISULTATI DEL COMFOR<span style="color: #858788">TEST</span></div>
+        <div class="logoContent">
+          <img class="logoComfortest" src="/applications/12/img/loghi/LOGO_COMFORTEST_Blue.png">
+        </div>
+      </div>
+      <div class="row containerInfoPerson">
+        <div class="generalInfo">
+          <p class="titleChapter">INFORMAZIONI GENERALI</p>
+          <div class="info">
+            <p>NOME
+              <span id="name">Simone</span>
+            </p>
+            <p>COGNOME
+              <span id="surname">Bini</span>
+            </p>
+            <p>ETÀ
+              <span id="age">43</span>
+            </p>
+            <p>VIA
+              <span id="addr">Carrara, 4</span>
+            </p>
+            <p>CITTÀ
+              <span id="city">Serra de' Conti (AN)</span>
+            </p>
+            <p>TELEFONO
+              <span id="cell">0731 871794</span>
+            </p>
+            <p>EMAIL
+              <span id="mail">simonebini@lordflex.com</span>
+            </p>
+            <p>PESO
+              <span id="weight">70</span>
+              <span>Kg</span>
+            </p>
+            <p>IMC (indice di Massa Corporea)
+              <span id="imc">0,7</span>
+            </p>
+          </div>
+          <div class="height">
+            <div class="slider"><input id="hightSlider" type="range" min="0" max="200" step="1" value="100"></div>
+            <div id="sagomaHeight" class="sagomaHeightUomo"></div>
+            <div class="valueHeightContainer">altezza
+              <p id="valueHeight">170
+                <span>cm</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="posturInfo">
+          <p class="titleChapter">RISULTATI RILEVATI DURANTE IL TEST</p>
+          <div class="containerSupino">
+            <div class="letto">
+              <div id="sagomaSupino" class="sagomaSupinoUomo">
+                <svg id="svgStep1"></svg>
+              </div>
+            </div>
+            <div class="descPostur">
+              <p class="titleChapter">POSIZIONE SUPINA</p>
+              <p class="descPosturText">mappa dei punti di pressione rilevati e curva di affondamento nella posizione supina.</p>
+              <div id="supinoProfile" class="supinoProfileUomo">
+                <canvas id="cnvsStep1"></canvas>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="containerFetale">
+            <div class="letto">
+              <div id="sagomaFetaleDx" class="sagomaFetaleDxUomo">
+                <svg id="svgStep2"></svg>
+              </div>
+            </div>
+            <div class="descPostur">
+              <p class="titleChapter">POSIZIONE FETALE DESTRA</p>
+              <p class="descPosturText">mappa dei punti di pressione rilevati e curva di affondamento nella posizione fetale destra.</p>
+              <div id="fetaleDxProfile" class="fetaleDxProfileUomo">
+                <canvas id="cnvsStep2"></canvas>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="containerFetale">
+            <div class="letto">
+              <div id="sagomaFetaleSx" class="sagomaFetaleSxUomo">
+                <svg id="svgStep3"></svg>
+              </div>
+            </div>
+            <div class="descPostur">
+              <p class="titleChapter">POSIZIONE FETALE SINISTRA</p>
+              <p class="descPosturText">mappa dei punti di pressione rilevati e curva di affondamento nella posizione fetale sinistra.</p>
+              <div id="fetaleSxProfile" class="fetaleSxProfileUomo">
+                <canvas id="cnvsStep3"></canvas>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+      <div class="row" style="padding: 0% 8% 1% 8%;">
+        <p class="mattressTitle">MATERASSI CONSIGLIATI
+          <img class="lordflexsLogo" src="/applications/12/img/loghi/LOGO_LORDFLEXS_Blue.png">
+        </p>
+      </div>
+      <div id="mattress2" class="row displayNone" style="padding: 0% 8% 1% 8%; text-align: center;">
+        <div class="col-xs-2 mattressImg"></div>
+        <div class="col-xs-4 mattressImg">
+          <img id="mattress2_0" src="/applications/12/img/catalogo50/aniversario50-min.png" style="width: 100%;">
+        </div>
+        <div class="col-xs-4 mattressImg">
+          <img id="mattress2_1" src="/applications/12/img/catalogo50/aquagel-min.png" style="width: 100%;">
+        </div>
+        <div class="col-xs-2 mattressImg"></div>
+      </div>
+      <div id="mattress3" class="row displayNone" style="padding: 0% 8% 1% 8%; text-align: center;">
+        <div class="col-xs-4 mattressImg" style="padding: 10px !important;">
+          <img id="mattress3_0" src="/applications/12/img/catalogo50/aniversario50-min.png" style="width: 100%;">
+        </div>
+        <div class="col-xs-4 mattressImg" style="padding: 10px !important;">
+          <img id="mattress3_1" src="/applications/12/img/catalogo50/aquagel-min.png" style="width: 100%;">
+        </div>
+        <div class="col-xs-4 mattressImg" style="padding: 10px !important;">
+          <img id="mattress3_2" src="/applications/12/img/catalogo50/bliss-min.png" style="width: 100%;">
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script src="/bower_components/jquery/dist/jquery.js"></script>
+<script src="/bower_components/chart.js/dist/Chart.js"></script>
+
+<script src="/bower_components/later/later.js"></script>
+<script src="/bower_components/hammerjs/hammer.js"></script>
+<script src="/bower_components/jqueryui/jquery-ui.js"></script>
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/bower_components/moment/min/moment-with-locales.min.js"></script>
+<script type="text/javascript" src="/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="/bower_components/js-xlsx/dist/xlsx.full.min.js"></script>
+<script type="text/javascript" src="/bower_components/ngFileReader/vendor/jquery.FileReader.js"></script>
+<script type="text/javascript" src="/bower_components/jszip/dist/jszip.min.js"></script>
+
+<script type="text/javascript">
+  document.getElementById("app").classList.add("fullscreen");
+  var http_auth = new XMLHttpRequest();
+  http_auth.open("POST", "/apio/user/authenticate", true);
+  http_auth.setRequestHeader("Content-Type", "application/json");
+  http_auth.onreadystatechange = function () {
+    if (http_auth.readyState === 4 && http_auth.status === 200) {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function () {
+        if (xhttp.readyState === 4 && xhttp.status === 200) {
+          var scope = JSON.parse(xhttp.responseText);
+
+          scope.matrixHumanSvg = {};
+
+          var descriptionList = ["Mappa dei punti di pressione rilevati e curva di affondamento per la posizione Supino", "Mappa dei punti di pressione rilevati e curva di affondamento per la posizione Fetale Sinistra", "Mappa dei punti di pressione rilevati e curva di affondamento per la posizione Fetale Destra"];
+
+          var setCustomerInfo = function (info) {
+            document.getElementById('peso').innerHTML = info.weight;
+            document.getElementById('altezza').innerHTML = info.height;
+            document.getElementById('sesso').innerHTML = info.gender;
+            document.getElementById('imc').innerHTML = info.imc;
+            document.getElementById('posizione').innerHTML = info.position;
+            
+            
+
+          };
+
+          var setValueCustomerInfo = function (info) {
+            document.getElementById('description').innerHTML = descriptionList[scope.description];
+
+            document.getElementById('imgGender').setAttribute('src', '/applications/12/img/' + info.gender + '.png');
+            document.getElementById('imgGender').parentNode.setAttribute('class', info.gender);
+
+            var count = $(('#countPeso'));
+            var s = Snap('#animatedPeso');
+            console.log(s);
+            var progress = s.select('#progressPeso');
+            progress.attr({ strokeDasharray: '0, 251.2' });
+            count.text(Number(info.weight).toFixed(0) + "kg");
+            progress.attr({ 'stroke-dasharray': (Number(info.weight).toFixed(2) * 251.2) / 100 + ',251.2' });
+
+            var count = $(('#countAltezza'));
+            var s = Snap('#animatedAltezza');
+            console.log(s);
+            var progress = s.select('#progressAltezza');
+            progress.attr({ strokeDasharray: '0, 251.2' });
+            count.text(Number(info.height).toFixed(0) + "cm");
+            progress.attr({ 'stroke-dasharray': ((Number(info.height).toFixed(2) - 100) * 251.2) / 100 + ',251.2' });
+
+            var count = $(('#countIMC'));
+            var s = Snap('#animatedIMC');
+            console.log(s);
+            var progress = s.select('#progressIMC');
+            progress.attr({ strokeDasharray: '0, 251.2' });
+            count.text(Number(info.imc).toFixed(2));
+            progress.attr({ 'stroke-dasharray': (Number(info.imc).toFixed(2) * 251.2) / 100 + ',251.2' });
+
+          };
+          //setValueCustomerInfo(scope.customerCare);
+
+
+
+          scope.drawingOk = false;
+
+          var correzzioneMatrixSens = 14;
+
+          var myChartStep1 = undefined;
+          var myChartStep2 = undefined;
+          var myChartStep3 = undefined;
+
+          var arrayTemplate = [
+            {
+              numeroRighe: 14,
+              numeroColonne: 7,
+              pixelYStartPosition: 105,
+              pixelXStartPosition: 75,
+              distanceBetween: 17,
+              stroke: 'rgba(90, 195, 216,1)',
+              fill: 'rgba(90, 195, 216,1)'
+
+            },
+            {
+              numeroRighe: 14,
+              numeroColonne: 7,
+              pixelYStartPosition: 60,
+              pixelXStartPosition: 70,
+              distanceBetween: 17,
+              stroke: 'rgba(90, 195, 216,1)',
+              fill: 'rgba(90, 195, 216,1)'
+
+            },
+            {
+              numeroRighe: 14,
+              numeroColonne: 7,
+              pixelYStartPosition: 60,
+              pixelXStartPosition: 70,
+              distanceBetween: 17,
+              stroke: 'rgba(90, 195, 216,1)',
+              fill: 'rgba(90, 195, 216,1)'
+
+            }
+          ];
+
+          var structureProfileData1 = {
+            type: 'line',
+            options: {
+              legend: {
+                display: false
+              },
+              scales: {
+                yAxes: [
+                  {
+                    gridLines: {
+                      drawBorder: false,
+                      display: false
+                    },
+                    display: false,
+                    ticks: {
+                      beginAtZero: true,
+                      stepSize: 3
+                    }
+                  }
+                ],
+                xAxes: [
+                  {
+                    gridLines: {
+                      drawBorder: false,
+                      display: false
+                    }
+                  }
+                ]
+              }
+            },
+            maintainAspectRatio: false,
+            data: {
+              labels: ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+              datasets: [
+                {
+                  label: "",
+                  fill: true,
+                  lineTension: 0.5,
+                  backgroundColor: "#005597",
+                  borderColor: "rgba(75,192,192,1)",
+                  borderCapStyle: 'butt',
+                  borderDash: [],
+                  borderDashOffset: 0.0,
+                  borderJoinStyle: 'miter',
+                  pointBorderColor: "rgba(75,192,192,1)",
+                  pointBackgroundColor: "#fff",
+                  pointBorderWidth: 1,
+                  pointHoverRadius: 5,
+                  pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                  pointHoverBorderColor: "rgba(220,220,220,1)",
+                  pointHoverBorderWidth: 2,
+                  pointRadius: 1,
+                  pointHitRadius: 10,
+                  data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -7]
+                }
+              ]
+            }
+          };
+
+          var structureProfileData2 = {
+            type: 'line',
+            options: {
+              legend: {
+                display: false
+              },
+              scales: {
+                yAxes: [
+                  {
+                    gridLines: {
+                      drawBorder: false,
+                      display: false
+                    },
+                    display: false,
+                    ticks: {
+                      beginAtZero: true,
+                      stepSize: 3
+                    }
+                  }
+                ],
+                xAxes: [
+                  {
+                    gridLines: {
+                      drawBorder: false,
+                      display: false
+                    }
+                  }
+                ]
+              }
+            },
+            maintainAspectRatio: false,
+            data: {
+              labels: ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+              datasets: [
+                {
+                  label: "",
+                  fill: true,
+                  lineTension: 0.5,
+                  backgroundColor: "#005597",
+                  borderColor: "rgba(75,192,192,1)",
+                  borderCapStyle: 'butt',
+                  borderDash: [],
+                  borderDashOffset: 0.0,
+                  borderJoinStyle: 'miter',
+                  pointBorderColor: "rgba(75,192,192,1)",
+                  pointBackgroundColor: "#fff",
+                  pointBorderWidth: 1,
+                  pointHoverRadius: 5,
+                  pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                  pointHoverBorderColor: "rgba(220,220,220,1)",
+                  pointHoverBorderWidth: 2,
+                  pointRadius: 1,
+                  pointHitRadius: 10,
+                  data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -7]
+                }
+              ]
+            }
+          };
+
+          var structureProfileData3 = {
+            type: 'line',
+            options: {
+              legend: {
+                display: false
+              },
+              scales: {
+                yAxes: [
+                  {
+                    gridLines: {
+                      drawBorder: false,
+                      display: false
+                    },
+                    display: false,
+                    ticks: {
+                      beginAtZero: true,
+                      stepSize: 3
+                    }
+                  }
+                ],
+                xAxes: [
+                  {
+                    gridLines: {
+                      drawBorder: false,
+                      display: false
+                    }
+                  }
+                ]
+              }
+            },
+            maintainAspectRatio: false,
+            data: {
+              labels: ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+              datasets: [
+                {
+                  label: "",
+                  fill: true,
+                  lineTension: 0.5,
+                  backgroundColor: "#005597",
+                  borderColor: "rgba(75,192,192,1)",
+                  borderCapStyle: 'butt',
+                  borderDash: [],
+                  borderDashOffset: 0.0,
+                  borderJoinStyle: 'miter',
+                  pointBorderColor: "rgba(75,192,192,1)",
+                  pointBackgroundColor: "#fff",
+                  pointBorderWidth: 1,
+                  pointHoverRadius: 5,
+                  pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                  pointHoverBorderColor: "rgba(220,220,220,1)",
+                  pointHoverBorderWidth: 2,
+                  pointRadius: 1,
+                  pointHitRadius: 10,
+                  data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -7]
+                }
+              ]
+            }
+          };
+
+          var arrayData = [];
+
+          var rows = [];
+          
+
+          var updateInfoPersons = function () {
+            document.getElementById('name').innerHTML = scope.infoPerson.name;
+            document.getElementById('surname').innerHTML = scope.infoPerson.surname;
+            document.getElementById('age').innerHTML = scope.infoPerson.age;
+            document.getElementById('addr').innerHTML = scope.infoPerson.addr;
+            document.getElementById('city').innerHTML = scope.infoPerson.city;
+            document.getElementById('cell').innerHTML = scope.infoPerson.cell;
+            document.getElementById('mail').innerHTML = scope.infoPerson.mail;
+            document.getElementById('cell').innerHTML = scope.infoPerson.cell;
+            document.getElementById('imc').innerHTML = scope.infoPerson.imc;
+            document.getElementById('weight').innerHTML = scope.step2.peso[0];
+            
+            document.getElementById('hightSlider').value = scope.infoPerson.height;
+            
+            document.getElementById('valueHeight').innerHTML = scope.infoPerson.height;
+			
+			if(scope.infoPerson.sex === 'donna'){
+				document.getElementById('supinoProfile').classList.remove('supinoProfileUomo');
+				document.getElementById('supinoProfile').classList.add('supinoProfileDonna');
+				
+				document.getElementById('sagomaSupino').classList.remove('sagomaSupinoUomo');
+				document.getElementById('sagomaSupino').classList.add('sagomaSupinoDonna');
+				
+				document.getElementById('sagomaFetaleDx').classList.remove('sagomaFetaleDxUomo');
+				document.getElementById('sagomaFetaleDx').classList.add('sagomaFetaleDxDonna');
+				
+				document.getElementById('sagomaFetaleSx').classList.remove('sagomaFetaleSxUomo');
+				document.getElementById('sagomaFetaleSx').classList.add('sagomaFetaleSxDonna');
+				
+				document.getElementById('sagomaHeight').classList.remove('sagomaHeightUomo');
+				document.getElementById('sagomaHeight').classList.add('sagomaHeightDonna');
+				
+				document.getElementById('fetaleDxProfile').classList.remove('fetaleDxProfileUomo');
+				document.getElementById('fetaleDxProfile').classList.add('fetaleDxProfileDonna');
+				
+				document.getElementById('fetaleSxProfile').classList.remove('fetaleSxProfileUomo');
+				document.getElementById('fetaleSxProfile').classList.add('fetaleSxProfileDonna');
+			}
+
+
+            if (scope.mattresses.length == 2) {
+              document.getElementById('mattress2').classList.remove('displayNone');
+              for (var s in scope.mattresses) {
+                document.getElementById('mattress2_' + s).setAttribute('src', scope.mattresses[s].urlIcon)
+              }
+
+            } else if (scope.mattresses.length == 3) {
+              document.getElementById('mattress3').classList.remove('displayNone');
+              for (var s in scope.mattresses) {
+                document.getElementById('mattress3_' + s).setAttribute('src', scope.mattresses[s].urlIcon)
+              }
+            }
+          }
+
+          var generateProfilGraph = function (pointArray, myChart) {
+            var dataToSet = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            for (var s in pointArray) {
+              if (pointArray[s] === 0) {
+                dataToSet[4 + Number(s)] = pointArray[s];
+              } else {
+                dataToSet[5 + Number(s)] = ((-pointArray[s]) / correzzioneMatrixSens);
+              }
+            }
+            if (myChart) {
+              myChart.data.datasets[0].data = dataToSet;
+              myChart.updateDatasets();
+              myChart.render(1, 1);
+            }
+          };
+
+          var detectHumanPositionOnTheBed = function (matrix) {
+
+            var position = "top";
+            var thisRow = 1;
+            var thisColl = 0;
+
+
+            var leftIndex = 0;
+            var rightIndex = 0;
+
+            for (var s in matrix) {
+              thisColl++;
+              var n = s + 1;
+
+              //console.log("colonna numero", thisColl);
+
+              if (thisColl <= 3) {
+                //console.log("sommo a sinistra");
+                leftIndex = leftIndex + matrix[s].z;
+              } else if (thisColl === 4) {
+                //console.log("sommo a metà");
+                leftIndex = leftIndex + matrix[s].z;
+                rightIndex = rightIndex + matrix[s].z;
+              } else if (thisColl > 4) {
+                //console.log("sommo a destra");
+                rightIndex = rightIndex + matrix[s].z;
+              }
+
+              //console.log("colonna valore", matrix[s].z);
+
+              if (n % 7 === 0) {
+                thisColl = 0;
+                thisRow++;
+              }
+            }
+
+            //console.log("left and right vale", leftIndex, rightIndex);
+            if (leftIndex > rightIndex && Math.abs(leftIndex - rightIndex) > 6500) {
+              //console.log("sei a sinistra return 0");
+              return 0;
+            } else if (rightIndex > leftIndex && Math.abs(leftIndex - rightIndex) > 6500) {
+              //console.log("sei a destra return 1");
+              return 1;
+            } else {
+              //console.log("sei sul dorso return 3");
+              return 2;
+            }
+          };
+
+          var createSvgMatrixHumanGraph = function (id, tamplate) {
+            //console.log("devo generare una matrice di: " + arrayTemplate.numeroRighe + "righe e:" + arrayTemplate.numeroColonne + "colonne");
+            var tempSvg = document.getElementById(id);
+            tamplate -= 1;
+            for (var x = 0; x < arrayTemplate[tamplate].numeroRighe; x++) {
+              var g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+              g.setAttribute('id', 'riga' + (x + 1));
+              tempSvg.appendChild(g);
+
+              //calcolo posizione Y
+              var cy = arrayTemplate[tamplate].pixelYStartPosition + (arrayTemplate[tamplate].distanceBetween * x);
+              scope.matrixHumanSvg["\"" + x + "\""] = {};
+              for (var y = 0; y < arrayTemplate[tamplate].numeroColonne; y++) {
+
+                //console.log("genero colonne svg", y)
+
+                var value = 0;
+
+
+                tempSvg.appendChild(g);
+
+                //calcolo posizione x
+                var cx = arrayTemplate[tamplate].pixelXStartPosition + (arrayTemplate[tamplate].distanceBetween * y);
+
+                var newCircle = document.createElementNS("http://www.w3.org/2000/svg", 'circle');
+                newCircle.setAttribute('id', id + "elementMatrix" + (arrayTemplate[tamplate].numeroRighe - 1 - x) + y);
+                newCircle.setAttribute('cx', cx);
+                newCircle.setAttribute('cy', cy);
+                newCircle.setAttribute('r', 1);
+                newCircle.setAttribute('stroke', arrayTemplate[tamplate].stroke);
+                newCircle.setAttribute('stroke-width', 1);
+                newCircle.setAttribute('fill', arrayTemplate[tamplate].fill);
+                g.appendChild(newCircle);
+
+
+                scope.matrixHumanSvg["\"" + x + "\""]["\"" + y + "\""] = {
+                  r: 1,
+                  stroke: 'green',
+                  strokeWidth: 1,
+                  fill: 'yellow'
+
+                }
+
+              }
+
+            }
+            //console.log('scope.matrixHumanSvg' , scope.matrixHumanSvg);
+          };
+
+          var updateSvgMatrixHumanGraph = function (matrixUpdate, id) {
+            var countRow = 0;
+            var countColl = 0;
+            var conunterTemp = 0;
+            for (var s in matrixUpdate) {
+              conunterTemp++;
+
+
+              document.getElementById(id + 'elementMatrix' + countRow + countColl).setAttribute('r', matrixUpdate[s].z / correzzioneMatrixSens);
+              //console.log("selezioni l'elemento: elementMatrix " + countRow + countColl);
+
+              if (conunterTemp !== 0 && conunterTemp % 7 === 0) {
+                countRow++;
+                countColl = 0;
+              } else {
+                countColl++;
+              }
+
+
+            }
+          };
+
+
+
+          scope.drawingOk = true;
+
+          var elem = document.getElementById("ApioApplication12");
+          if (elem) {
+
+            //LOAD PERSONAL INFO
+            updateInfoPersons();
+
+            //CARICAMENTO SVG SAGOMA
+            createSvgMatrixHumanGraph('svgStep1', 1);
+            createSvgMatrixHumanGraph('svgStep2', 2);
+            createSvgMatrixHumanGraph('svgStep3', 3);
+
+            updateSvgMatrixHumanGraph(scope.step1.testLastMatrix[0], 'svgStep1');
+            updateSvgMatrixHumanGraph(scope.step2.testLastMatrix[0], 'svgStep2');
+            updateSvgMatrixHumanGraph(scope.step3.testLastMatrix[0], 'svgStep3');
+
+            //CARICAMENTO CANVAS SAGOMA
+            var ctx1 = document.getElementById("cnvsStep1").getContext("2d");
+            var ctx2 = document.getElementById("cnvsStep2").getContext("2d");
+            var ctx3 = document.getElementById("cnvsStep3").getContext("2d");
+
+            myChartStep1 = new Chart(ctx1, structureProfileData1);
+            myChartStep2 = new Chart(ctx2, structureProfileData2);
+            myChartStep3 = new Chart(ctx3, structureProfileData3);
+
+            generateProfilGraph(scope.step1.lastProfileData[0], myChartStep1);
+            generateProfilGraph(scope.step2.lastProfileData[0], myChartStep2);
+            generateProfilGraph(scope.step3.lastProfileData[0], myChartStep3);
+
+          }
+
+        };
+      }
+
+      xhttp.open("GET", "/applications/12/PDF/data.json", true);
+      xhttp.send();
+    };
+  }
+  http_auth.send(JSON.stringify({
+    email: "admin",
+    password: "admin",
+    rememberMe: "1"
+  }));
+
+</script>

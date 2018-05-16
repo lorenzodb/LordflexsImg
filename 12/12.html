@@ -1,0 +1,1205 @@
+<div id="ApioApplication12" ng-app="ApioApplication12"
+     style="padding: 10px; background: white;">
+    <div ng-controller="defaultController" style="display: block;">
+
+        <style>
+
+            @font-face {
+                font-family: InterstateUltraBlackCondensed;
+                src: url("applications/{{object.objectId}}/font/Interstate-UltraBlackCondensed/Interstate-UltraBlackCondensed.ttf");
+            }
+
+            @font-face {
+                font-family: Interstate-LightCondensed;
+                src: url("applications/{{object.objectId}}/font/Interstate-LightCondensed/Interstate-LightCondensed.ttf");
+            }
+
+            @font-face {
+                font-family: SwissBTBolExt;
+                src: url("applications/{{object.objectId}}/font/Swiss721BT/Swiss721BoldBT.ttf");
+            }
+            
+            @font-face {
+                font-family: Sw721Rm;
+                src: url("applications/{{object.objectId}}/font/Swiss721BT/Sw721Rm.ttf");
+            }
+            
+             @font-face {
+                font-family: Interstate-BoldCondensed;
+                src: url("applications/{{object.objectId}}/font/Interstate-BoldCondensed/Interstate-BoldCondensed.ttf");
+            }
+
+            md-backdrop.md-dialog-backdrop {
+                z-index: 1033;
+            }
+
+            .md-scroll-mask {
+                z-index: 1034 !important;
+            }
+
+            .md-dialog-container {
+                z-index: 1035;
+            }
+
+            .dialog_width {
+                min-width: 60%;
+            }
+
+            .mattressInfo_dialog_width {
+                min-width: 50%;
+                width: 60%;
+            }
+
+            md-dialog-actions {
+                border-top: 1px solid #e8e8e8;
+                margin-top: 1px;
+            }
+
+            .contentLoaderMailButton {
+                margin: 1px auto;
+                font-size: 4.5px;
+                border: 1.3em solid rgba(200, 200, 200, 0.6);
+                border-left-color: rgba(120, 120, 120, 0.70);
+            }
+
+            .md-button.md-raised[disabled] {
+                background-color: rgba(0, 0, 0, 0.12) !important;
+            }
+			#infoProva{
+				height: 38%;
+			    width: 33%;
+			    padding: 3% 1%;
+			    margin-left: 22%;
+			    text-align: left;
+			    position: absolute;
+			     
+			}
+			.infoTitolo{
+			    font-family: SwissBTBolExt, serif;
+			    font-size: 21px;
+			    color: #0c3756;
+			    padding-bottom: 3%;
+				border-bottom: solid 2px #5dc2d7;
+			}
+			.infoDesc{
+				font-family: Sw721Rm, serif;
+				padding-bottom: 3%;
+				border-bottom: solid 2px #5dc2d7;
+			}
+			.infoDescInfoClient{
+				font-family: Sw721Rm, serif;
+				//padding-bottom: 3%;
+			}
+			.inofParametri{
+				padding-bottom: 3%;
+				margin: 0;
+				border-bottom: solid 2px #5dc2d7;
+			}
+			.inofParametri p{
+				margin: 0;
+			}
+			.titleStepBar{
+		        margin: 0;
+		        font-size: 19px;
+		        color: rgb(14 156 191);
+            }
+            .descStepBar{
+	            font-size: 12px;
+			    line-height: 14px;
+			    margin: 0;
+			    color: rgb(4 153 196);
+            }
+            .stepBarSpace{
+	            margin: 0;
+				height: 33px; 
+            }
+            .imgStepBar{
+	            background-image: url(/applications/12/img/barra_test-01.svg);
+			    background-repeat: no-repeat;
+			    background-size: 87%;
+			    background-position: 44% 44%;
+			    width: 100%;
+			    height: 100%;
+			    margin: 0;
+            }
+            #defaultController {
+                height: 99% !important;
+            }
+            #graficoProfilo{
+	                margin-top: 27%;
+				    margin-left: 23%;
+				    position: absolute;
+				    width: 31% !important;
+				    height: 4% !important;
+            }
+            #sagomaInterattiva{
+	            z-index: 3;
+				position: relative;
+				float: left;
+            }
+			.sagomaProfilo{
+				height: 67%;
+				width: 33%;
+			    margin-left: 24%;
+			    position: absolute;
+			}
+            .sagomaUomo {
+                width: 23%;
+			    background: no-repeat;
+			    position: absolute;
+			    z-index: 2;
+			    height: 67%;
+			    background-image: url(/applications/12/img/sagome/UOMO_SUPINO-min.png);
+			    background-position: 50% 26%;
+			    background-size: 46%;
+
+            }
+            .sagomaDonna {
+                width: 23%;
+			    background: no-repeat;
+			    position: absolute;
+			    z-index: 2;
+			    height: 67%;
+			    background-image: url(/applications/12/img/sagome/DONNA_SUPINA-min.png);
+			    background-position: 50% 26%;
+			    background-size: 37%;
+
+            }
+            .letto{
+	            width: 23%;
+			    background: no-repeat;
+			    position: absolute;
+			    z-index: 2;
+			    height: 67%;
+			    background-image: url(/applications/12/img/sagome/LETTO-min.png);
+			    background-position: 50% 26%;
+			    background-size: 75%;
+            }
+
+            .sagomaRed {
+                /*border-right: solid 1px #fff;*/
+                width: 100%;
+                background: no-repeat;
+                position: absolute;
+                z-index: 2;
+                height: 130%;
+                background-image: url("/applications/{{object.objectId}}/img/sagomaUomoRed.png");
+                background-position: 50% 26%;
+                background-size: 40%;
+            }
+
+            .sagomaGreen {
+                /*border-right: solid 1px #fff;*/
+                width: 100%;
+                background: no-repeat;
+                position: absolute;
+                z-index: 2;
+                height: 130%;
+                background-image: url("/applications/{{object.objectId}}/img/sagomaUomoGreen.png");
+                background-position: 50% 26%;
+                background-size: 40%;
+            }
+
+            .sagomaLeftUomo {
+	            width: 23%;
+			    background: no-repeat;
+			    position: absolute;
+			    z-index: 2;
+			    height: 67%;
+                background-image: url(/applications/12/img/sagome/UOMO_FETALE_SX-min.png) !important;
+                background-position: 50% 26%;
+				background-size: 63%;
+            }
+            
+            .sagomaLeftDonna {
+	            width: 23%;
+			    background: no-repeat;
+			    position: absolute;
+			    z-index: 2;
+			    height: 67%;
+                background-image: url(/applications/12/img/sagome/DONNA_FETALE_SX-min.png) !important;
+                background-position: 50% 26%;
+				background-size: 63%;
+            }
+
+            .sagomaLeftRed {
+                /*border-right: solid 1px #fff;*/
+                width: 100%;
+                background: no-repeat;
+                position: absolute;
+                z-index: 2;
+                height: 130%;
+                background-image: url("/applications/{{object.objectId}}/img/sleepLeftRed.png");
+                background-position: 55% 34%;
+                background-size: 41%;
+            }
+
+            .sagomaLeftGreen {
+                /*border-right: solid 1px #fff;*/
+                width: 100%;
+                background: no-repeat;
+                position: absolute;
+                z-index: 2;
+                height: 130%;
+                background-image: url("/applications/{{object.objectId}}/img/sleepLeftGreen.png");
+                background-position: 55% 34%;
+                background-size: 41%;
+            }
+
+            .sagomaRightUomo {
+                width: 23%;
+			    background: no-repeat;
+			    position: absolute;
+			    z-index: 2;
+			    height: 67%;
+			    background-image: url(/applications/12/img/sagome/UOMO_FETALE_DX-min.png) !important;
+			    background-position: 50% 26%;
+			    background-size: 63%;
+            }
+            .sagomaRightDonna {
+	            width: 23%;
+			    background: no-repeat;
+			    position: absolute;
+			    z-index: 2;
+			    height: 67%;
+                background-image: url(/applications/12/img/sagome/DONNA_FETALE_DX-min.png) !important;
+				background-position: 50% 26%;
+	 			background-size: 63%;
+			}				
+            
+
+            .sagomaRightRed {
+                /*border-right: solid 1px #fff;*/
+                width: 100%;
+                background: no-repeat;
+                position: absolute;
+                z-index: 2;
+                height: 130%;
+                background-image: url("/applications/{{object.objectId}}/img/sleepRightRed.png");
+                background-position: 47% 34%;
+                background-size: 41%;
+            }
+
+            .sagomaRightGreen {
+                /*border-right: solid 1px #fff;*/
+                width: 100%;
+                background: no-repeat;
+                position: absolute;
+                z-index: 2;
+                height: 130%;
+                background-image: url("/applications/{{object.objectId}}/img/sleepRightGreen.png");
+                background-position: 47% 34%;
+                background-size: 41%;
+            }
+
+            .profilo {
+                margin-left: 22%;
+			    margin-top: 21%;
+			    width: 33%;
+			    background: no-repeat;
+			    position: absolute;
+			    z-index: 0;
+			    height: 26%;
+            }
+
+            .prfiloFrontaleUomo {
+                background-image: url(/applications/12/img/sagome/UOMO_DISTESO_LETTO-min.png);
+				background-position: 50% 26%;
+				background-size: 98%;
+            }
+            .prfiloFrontaleDonna {
+                background-image: url(/applications/12/img/sagome/DONNA_DISTESA_LETTO-min.png);
+				background-position: 50% 26%;
+				background-size: 98%;
+            }
+            
+            .prfiloDestroUomo{
+	           background-image: url(/applications/12/img/sagome/ELEMENTI_SAGOME-10-min.png);
+			   background-position: 50% 26%;
+			   background-size: 98%;
+            }
+            
+            .prfiloSinistroUomo{
+	           background-image: url(/applications/12/img/sagome/ELEMENTI_SAGOME-11-min.png);
+			   background-position: 50% 26%;
+			   background-size: 98%;
+            }
+            
+            .prfiloDestroDonna{
+	           background-image: url(/applications/12/img/sagome/ELEMENTI_SAGOME-13-min.png);
+			   background-position: 50% 26%;
+			   background-size: 98%;
+            }
+            
+            .prfiloSinistroDonna{
+	           background-image: url(/applications/12/img/sagome/ELEMENTI_SAGOME-12-min.png);
+			   background-position: 50% 26%;
+			   background-size: 98%;
+            }
+
+            .prfiloLaterale {
+                background-image: url(/applications/12/img/profiloLaterale.png) !important;
+                background-position: 24% 28%;
+                background-size: 79%;
+            }
+
+            .infoCell {
+                color: #fff;
+                width: 149px;
+                display: table-cell;
+                height: 95px;
+                /* background: #fff; */
+                border-radius: 3px;
+                /* border: solid 1px rgba(24, 51, 102, 0.04); */
+                /* margin-top: 2px; */
+            }
+
+            #info {
+                position: absolute;
+                width: 100%;
+                /* width: 164px; */
+                margin-top: 11%;
+                /* margin-bottom: -22%; */
+                /* margin-left: 86%; */
+                /* bottom: 0; */
+                color: #000;
+            }
+
+            .genderWomanImg {
+                width: 69% !important;
+            }
+
+            .prova {
+                height: 100% !important;
+            }
+
+            md-tabs-canvas {
+                /*border-bottom: 1px solid #00539A;*/
+                background-color: #071d50;
+            }
+
+            md-pagination-wrapper.md-center-tabs {
+                width: initial !important
+            }
+
+            md-tabs-wrapper md-next-button, md-tabs-wrapper md-prev-button {
+                background-color: #071d50;
+            }
+
+            md-tabs-wrapper md-prev-button.md-disabled, md-tabs-wrapper md-next-button.md-disabled {
+                opacity: 1;
+            }
+
+            md-tabs .md-tab {
+                color: #fff;
+            }
+
+            md-tabs .md-tab.md-active {
+                color: #fff;
+                font-weight: 600;
+            }
+
+            md-tabs md-ink-bar {
+                color: #00C3E6;
+                background: #00C3E6;
+            }
+
+            md-tabs-wrapper md-prev-button md-icon, md-tabs-wrapper md-next-button md-icon {
+                fill: white;
+            }
+
+            md-progress-circular.md-default-theme .md-inner .md-right .md-half-circle, md-progress-circular .md-inner .md-right .md-half-circle {
+                border-right-color: rgb(255, 255, 255);
+            }
+
+            md-progress-circular.md-default-theme .md-inner .md-left .md-half-circle, md-progress-circular .md-inner .md-left .md-half-circle, md-progress-circular.md-default-theme .md-inner .md-right .md-half-circle, md-progress-circular .md-inner .md-right .md-half-circle {
+                border-top-color: rgb(255, 255, 255);
+            }
+
+            md-progress-circular.md-default-theme .md-inner .md-left .md-half-circle, md-progress-circular .md-inner .md-left .md-half-circle {
+                border-left-color: rgb(255, 255, 255);
+            }
+
+            #buttonNewTest {
+                display: table;
+                width: 100%;
+                height: 100%;
+            }
+
+            .button {
+                display: table-cell;
+                vertical-align: middle;
+                width: 100%;
+                height: 100%;
+            }
+
+            .ceneterButton {
+                width: 154px;
+                height: 50px;
+                margin-left: auto;
+                margin-right: auto;
+
+            }
+
+            /* WIZARD STYLE ---------------- */
+            /* Prima della modifica di Lorenzo
+	            #wizard_container {
+                z-index: 5;
+                margin-top: 40px;
+            }*/
+
+            #wizard_container {
+                z-index: 5;
+                margin-top: 0;
+            }
+
+            .selectedMattressesIconContainer {
+                text-align: center;
+            }
+
+            .selectedMattressesIcon {
+                width: 150px;
+            }
+
+            .testStep4CardColor {
+                background-color: transparent;
+                box-shadow: none !important;
+            }
+
+            /*#wizardFirstStepImg {
+                background-color: #071d50;
+                width: 120px;
+            }
+
+            .firstStepImgYellow {
+                background-color: #F1C40F !important;
+            }*/
+
+            /* CATALOGUE STYLE ---------------- */
+            .mattressIconContainer {
+                text-align: center;
+                padding: 34px 0 !important;
+            }
+
+            .mattressIcon {
+                width: 130px;
+            }
+
+            .mattressInfoImg {
+                width: 100%;
+            }
+
+            #mattresses_info_container {
+                padding: 0 !important;
+            }
+
+            .catalogue_title {
+                width: 85%;
+                text-align: center;
+                padding-top: 50px;
+                margin-bottom: 0;
+                font-size: 32px;
+                color: whitesmoke;
+                font-weight: 400;
+                font-style: italic;
+            }
+
+            /* REPORT STYLE ---------------- */
+            .buttonGreen {
+                background-color: #228B22 !important;
+            }
+
+            .buttonRed {
+                background-color: #e74c3c !important;
+            }
+
+            /* VANTAGGI STYLE ---------------- */
+            #tab-content-1 > div {
+                height: 100% !important;
+            }
+
+            #tab-content-0 > div {
+                height: 100% !important;
+                overflow: hidden;
+            }
+
+            #tab-content-2 > div {
+                height: 100% !important;
+            }
+
+            .vantaggi {
+                background-image: url(/applications/12/img/bambinoNew.png);
+            / / background-position-y: 7 %;
+                background-repeat: no-repeat;
+            / / background-size: cover;
+            }
+
+            .titoloVantaggi {
+                font-family: InterstateUltraBlackCondensed, serif;
+            }
+
+            .descrizioneVantaggi {
+                font-family: Interstate-BoldCondensed, serif;
+                text-align: justify;
+            }
+
+            /* HISTORY STYLE ---------------- */
+            .historyIcon {
+                width: 100%;
+            }
+
+            .historyTextContainer {
+                color: whitesmoke !important;
+                padding: 20px 28px;
+            }
+
+            .historyTextContainer p {
+                margin-bottom: 12px;
+                line-height: 1.5;
+                /* font-size: 15px; */
+                letter-spacing: 0.5px;
+            }
+
+            .contentStoria {
+                background-color: rgba(81, 154, 196, 0.71);
+                color: #fff;
+                height: 100%;
+                padding: 5.5%;
+            }
+
+            .titoloStoria {
+                font-family: InterstateUltraBlackCondensed, serif;
+            }
+
+            .descrizioneStoria {
+                font-family: Interstate-BoldCondensed, serif;
+                text-align: justify;
+            }
+			
+			.leftBar{
+				width: 20%;
+				height: 100%;
+				background-color: rgba(11, 55, 87, 1); 
+				float: left;
+				position: absolute;
+				z-index: 5;
+			}
+			.contentTest{
+				height:100%; 
+				width:80%; 
+				float: right; 
+				margin: 0;
+			}
+			.testStart{
+				margin-top: 2%;
+			    width: 67%;
+			    vertical-align: middle;
+			    display: inline-block;
+			    height: 90%;
+			}
+			.contentTestPostura{
+				padding-top: 2%;
+			    padding-bottom: 2%;
+			    padding-left: 14%;
+			    padding-right: 14%;
+			    display: table;
+			    text-align: center;
+			    width: 100%;
+			    height: 75%;
+			}
+			.contentTestStep{
+				height: 90px;
+				background-color: #86cee19e;
+				text-align: center;
+				//padding: 1%;
+			}
+			.contentTestBatton{
+				z-index: 3;
+			    position: absolute;
+			    width: 80%;
+			    bottom: 18px;
+			}
+            .logoStyle {
+                background-image: url(/applications/12/img/loghi/logo_lordflexs.svg);
+			    height: 25%;
+			    width: 100%;
+			    background-repeat: no-repeat;
+			    background-size: 80%;
+			    background-position: 50% 50%;
+            }
+
+            .contentVantaggiBottom {
+                height: 40% !important;
+                position: absolute;
+                width: 100%;
+                bottom: 0;
+                left: 1%;
+                padding-top: 6%;
+                background-color: rgba(3, 70, 117, 0.85);
+            }
+            .descriptionVantaggiPage{
+	            position: absolute;
+			    width: 27%;
+			    right: 9%;
+			    top: 8%;
+            }
+            .vantaggiTitle{
+				width: 100%;
+			    height: 55px;
+			    line-height: 55px;
+			    font-size: 30px;
+			    text-align: center;
+			    color: #0c3756;
+			    font-family: SwissBTBolExt, serif;
+            }
+            .titlePoint{
+				width: 100%;
+			    color: #0c3756;
+			    border-bottom: 1px solid #0c3756;
+			    height: 37px;
+			    font-size: 20px;
+			    font-family: SwissBTBolExt, serif;
+            }
+            .numberTitle{
+	            font-size: 40px;
+            }
+            .descriptionPoint{
+	            text-align: justify;
+			    width: 100%;
+			    padding-top: 5px;
+			    line-height: 13px;
+			    font-size: 12px;
+			    font-family: Sw721Rm, serif;
+			    color: #3c3c3b;
+            }
+            .vantaggiPoint{
+	            width: 20%;
+	            padding: 15px;
+	            height: 71%;
+	            float: left;
+            }
+
+            .textNumberVantaggi {
+                color: #009ddf;
+                text-align: center;
+                font-size: 41px;
+                font-family: Interstate-BoldCondensed, serif;
+            }
+
+            .textDescriptionNumberVantaggi {
+                color: #fff;
+                text-align: center;
+                font-family: Interstate-BoldCondensed, serif;
+                line-height: 15px;
+            }
+
+            .textTitleNumberVantaggi {
+                position: absolute;
+                top: 0;
+                font-family: InterstateUltraBlackCondensed, serif;
+                color: #fff;
+                padding: 2%;
+                font-size: 20px;
+            }
+
+            @media only screen and (max-width: 349px) {
+                .dialog_width {
+                    min-width: 100%;
+                }
+
+                .mattressInfo_dialog_width {
+                    min-width: 100%;
+                }
+            }
+
+            @media only screen and (min-width: 350px) and (max-width: 767px) {
+                .dialog_width {
+                    min-width: 100%;
+                }
+
+                .mattressInfo_dialog_width {
+                    min-width: 100%;
+                }
+            }
+
+            @media only screen and (min-width: 768px) and (max-width: 1199px) {
+                .mattressInfo_dialog_width {
+                    min-width: 55%;
+                }
+            }
+            .progressBar{
+	            background: rgba(11, 55, 85, 0.67);
+			    width: 15%;
+			    display: table;
+			    vertical-align: middle;
+			    text-align: right;
+			    position: absolute;
+			    height: 3.4%;
+			    margin-top: 2.1%;
+			    margin-left: 4.9%;
+			    border-radius: 100px;
+            }
+            .whiteCircleProgressBar{
+	            width: 10px;
+			    height: 10px;
+			    margin-right: 7px;
+			    vertical-align: middle;
+			    background: white;
+			    border-radius: 100%;
+			    display: inline-block;
+            }
+            .barStepped{
+	            color: rgb(11,55,86);
+            }
+            .firstPage{
+	           	height: 100%;
+			    width: 100%;
+			    background-repeat: no-repeat;
+			    background-image: url(/applications/12/img/FOTO_SENZA_PULSANTE-min.png);
+			    background-size: 100% 100%;
+            }
+            .selectTypeTestPage{
+	            height: 100%;
+			    width: 100%;
+			    position: absolute;
+			    z-index: 0;
+			    background-repeat: no-repeat;
+			    background-image: url(/applications/12/img/bambinoNew.png);
+			    background-size: 100% 100%;
+            }
+            .contentVantaggi{		
+				background: #86cee1a8;
+			    width: 80%;
+			    height: 195px;
+			    position: absolute;
+			    z-index: 4;
+			    margin: 0;
+			    bottom: 12%;
+            }
+            .contentTextVantaggi{
+	            
+            }
+            .selectSex{
+	            width: 22%;
+			    margin-top: 3%;
+			    position: absolute;
+			    text-align: left;
+			    height: 66%;
+            }
+			
+			.selectMan{
+				width: 75%;
+			    float: left;
+			    height: 83%;
+			    background-size: 100%;
+			    background-repeat: no-repeat;
+			    background-image: url(/applications/12/img/sagome/uomo_donna-02.svg);
+			   
+			}
+			.selectWomen{
+				width: 75%;
+			    float: left;
+			    height: 83%;
+			    background-size: 100%;
+			    background-repeat: no-repeat;
+			    background-image: url(/applications/12/img/sagome/uomo_donna-03.svg);
+			}
+			.insertInfo{
+				width: 100%;
+			    padding: 0;
+			    margin: 0;
+			    line-height: 0px;
+			    height: 45px;
+			}
+			.labelInfoClient{
+				width: 25%;
+				float: left;
+				height: 100%;
+			}
+			.labelInfoClient p{
+				margin: 0 0 10px;
+				color: #0c3756;
+			}
+			.inputInfoClient{
+				width: 75%;
+				float: left;
+				height: 100%;				
+			}
+			.inputInfoClient input[type='text']{
+				border: solid 1px #0c3756;
+				width: 100%;
+				margin: 0 0 10px;
+			}
+			.sliderHeight{
+				width: 23%;
+			    float: left;
+			    height: 100%;
+			}
+			.sliderHeight input[type='range']{
+				transform: rotate(-90deg);
+			    width: 320px;
+			    height: 2px;
+			    transform-origin: 183px 153px;
+			    -webkit-appearance: none;
+			    appearance: none;
+			    outline: none;
+			    background-color: black;
+			}
+			.sliderHeight input[type='number']{
+			    width: 42px;
+			    height: 25px;
+			    float: left;
+			    margin-left: -9%;
+			    border: none;
+			    font-size: 17px;
+			    padding: 0px;
+			    text-align: center;
+			    margin: 0px;
+			}
+			.sliderHeight input[type='range']::-webkit-slider-thumb {
+			    -webkit-appearance: none; /* Override default look */
+			    appearance: none;
+			    width: 25px; /* Set a specific slider handle width */
+			    height: 25px; /* Slider handle height */
+			    border-radius: 25px;
+			    background-color: rgba(11, 55, 87, 1); /* Green background */
+			    cursor: pointer; /* Cursor on hover */
+			}
+			.notverify{
+				border: 1px solid red !important;
+			}
+			.lordButton{   
+				width: 200px;
+				box-shadow: 0px 4px 12px -4px #000;
+			    font-size: 20px;
+			    line-height: 50px;
+			    text-align: center;
+			    height: 50px;
+			    background: blue;
+			    border-radius: 50px;
+			    background-color: rgba(11, 55, 87, 1);
+			    color: white;
+			}
+			#sagomaManichino{
+				opacity: 0.4;
+			}
+			.iconMaterassi{
+				width: 100%;
+				padding: 1%;
+			}
+			.newTest{
+				float: right;
+				margin-right: 7%;
+				margin-top: 2%;
+			}
+			.newTestRight{
+				float: right;
+				margin-right: 1%;
+				margin-top: 2%;
+			}
+        </style>
+
+        <topappapplication style="display:none;"></topappapplication>
+        <div id="app" style="display: block; height:100%;">
+            <div class="leftBar" ng-show="testStep != -3">
+	            <div class="logoStyle"></div>
+	            <div style="text-align: center; bottom: 0; position: inherit;">
+		            <img src="/applications/{{object.objectId}}/img/loghi/comfortest-01.svg" style="width: 80%;">
+		            <img src="/applications/{{object.objectId}}/img/loghi/logoComfortest.svg" style="width: 56%;">
+		            <div><img src="/applications/{{object.objectId}}/img/loghi/modello_brevettatto-01.svg" style="width: 58%;padding: 14%;"></div>
+	            </div>
+	            
+            </div>
+            <div class="firstPage" ng-show="testStep == -3" ng-click="nextStep()"></div>
+            <div class="selectTypeTestPage" ng-show="testStep == -2"></div>
+            <!-- TODO mettere margin: 0; alla row, correggere allineamento svg -->
+            <div class="contentTest" style="" ng-show="testStep >= -2">
+	            <div class="contentTestPostura">
+		            	<div class="selectSex" ng-show="testStep == -1">
+	                        <div class="sliderHeight">
+		                        
+		                        <input id="hightSlider" ng-model="altezza" ng-change="listenAlt()" type="range" min="0" max="200" step="1">
+		                        <p style="margin-top: 351px;margin-bottom: 0;font-size: 20px;">altezza</p>
+		                        <input ng-model="altezza" type="number">
+		                        <p style="margin-bottom: 0;font-size: 20px;">cm</p>
+                 			</div>
+	                        <div ng-click="selectSex()" ng-class="{selectMan : sesso === 'uomo' , selectWomen : sesso === 'donna'}">
+	                        </div>
+	                        
+                        </div>
+		            	<div class="letto" ng-show="testStep >= 0 && testStep <= 2"></div>
+			            <div id="sagomaManichinoStep" ng-show="testStep >= 0 && testStep <= 2" style="z-index: 3;" ng-class="{'sagomaUomo' : sesso === 'uomo' && testStep === 0, 'sagomaDonna' : sesso === 'donna' && testStep === 0, 'sagomaLeftUomo' : sesso === 'uomo' && testStep === 1, 'sagomaLeftDonna' : sesso === 'donna' && testStep === 1,  'sagomaRightUomo' : sesso === 'uomo' && testStep === 2, 'sagomaRightDonna' : sesso === 'donna' && testStep === 2}" >
+				            <svg id="sagomaInterattiva" width="100%" height="100%"></svg>
+			            </div>
+			            <div id="sagomaManichino" ng-show="testStep >= 0 && testStep <= 2" ng-class="{'sagomaUomo' : sesso === 'uomo', 'sagomaDonna' : sesso === 'donna' }">
+			            </div>
+                        
+                        <div id="infoProva">
+                            <div ng-show="testStep >= 0">
+	                            
+	                            <p ng-show="testStep === 0" class="infoTitolo">POSIZIONE SUPINA</p>
+	                            <p ng-show="testStep === 0" class="infoDesc">Distenditi in posizione supina (come in figura) e rimani fermo per 5 secondi. Il timer partirà non appena sarai nella posizione corretta.</p>
+	                            
+	                            <p ng-show="testStep === 1" class="infoTitolo">POSIZIONE FETALE DESTRA</p>
+	                            <p ng-show="testStep === 1" class="infoDesc">Girati e disponiti in posizione fetale destra (come in figura) e rimani fermo per 5 secondi. Il timer partirà non appena sarai nella posizione corretta.</p>
+	                            
+	                            <p ng-show="testStep === 2" class="infoTitolo">POSIZIONE FETALE SINISTRA</p>
+	                            <p ng-show="testStep === 2" class="infoDesc">Girati e disponiti in posizione fetale sinistra (come in figura) e rimani fermo per 5 secondi. Il timer partirà non appena sarai nella posizione corretta.</p>
+	                            
+	                            <div ng-show="testStep <= 2" class="row inofParametri" style="text-align: center;">
+		                            <div class="col-xs-4"><p>PESO</p><p>{{peso}}</p></div>
+		                            <div class="col-xs-4"><p>ALTEZZA</p><p>{{altezza}}</p></div>
+		                            <div class="col-xs-4"><p>IMC</p><p>{{imc}}</p></div>
+	                            </div>
+                            </div>
+							<div ng-show="testStep == -1">
+								<p class="infoTitolo">INFORMAZIONI GENERALI</p>
+								<p class="infoDescInfoClient">Per iniziare il Test, inserisci le seguenti informazioni:</p>
+								<div class="labelInfoClient">
+									<p>NOME*</p>
+									<p>COGNOME*</p>
+									<p>ETÀ*</p>
+									<p>VIA</p>
+									<p>CITTÀ</p>
+									<p>TELEFONO</p>
+									<p>E-MAIL</p>
+								</div>
+								<div class="inputInfoClient">
+									<input id="personName" ng-focus="verifyInfoClients()" ng-change="verifyInfoClients()" ng-model="personName" type="text" placeholder="Nome">
+									<input id="personSurname" ng-focus="verifyInfoClients()" ng-change="verifyInfoClients()" ng-model="personSurname" type="text" placeholder="Cognome">
+									<input id="personAge" ng-focus="verifyInfoClients()" ng-change="verifyInfoClients()" ng-model="personAge" type="text" placeholder="Eta">
+									<input id="personAddr" ng-focus="verifyInfoClients()" ng-change="verifyInfoClients()" ng-model="personAddr" type="text" placeholder="Via">
+									<input id="personCity" ng-focus="verifyInfoClients()" ng-change="verifyInfoClients()" ng-model="personCity" type="text" placeholder="Citta">
+									<input id="personCell" ng-focus="verifyInfoClients()" ng-change="verifyInfoClients()" ng-model="personCell" type="text" placeholder="Telefono">
+									<input id="personEmail" ng-focus="verifyInfoClients()" ng-change="verifyInfoClients()" ng-model="personEmail" type="text" placeholder="e-Mail">
+								</div>
+							</div>
+                        </div>
+                        <div id="risultatifinali" ng-show="testStep === 3">
+	                        
+	                        <div class="row" style="margin-top: 8%;">
+		                        <p style="font-size: 31px; color: rgba(11, 55, 87, 1);font-family: SwissBTBolExt;">RISULTATI DEI TEST</p>
+		                    </div>
+	                        <div class="row">
+		                        <p style="margin:0;height: 50px;line-height: 50px;font-size: 19px;color: white;background: #5dc3d7; font-family: Sw721Rm;">Ecco i materassi della collezione Lordflex's che più si adattano al tuo corpo:</p>
+	                        </div>
+	                        
+	                        <div class="row">
+		                        <div class="col-xs-2" ng-show="mattresses.length === 2"></div>
+		                        <div class="col-xs-4" ng-show="mattresses.length === 1"></div>
+		                        <div ng-repeat="mat in mattresses" class="col-xs-4" style="padding: 0; margin: 0;">
+			                        <img class="iconMaterassi" src="{{mat.urlIcon}}">
+		                        </div>
+		                        <div class="col-xs-2" ng-show="mattresses.length === 2"></div>
+		                        <div class="col-xs-4" ng-show="mattresses.length === 1"></div>
+	                        </div>
+	                        <div class="row">
+		                        <!--<div ng-repeat="mat in mattresses" class="col-xs-4" style="padding: 0; margin: 0;">
+			                        <img class="iconMaterassi" src="{{mat.urlIcon}}">
+		                        </div>-->
+	                        </div>
+                        </div>
+                        <!--</div>-->
+                        <div id="profilo" class="profilo" ng-class="{prfiloFrontaleUomo : sesso === 'uomo' && testStep === 0, prfiloDestroUomo : sesso === 'uomo' && testStep === 1, prfiloSinistroUomo : sesso === 'uomo' && testStep === 2, prfiloFrontaleDonna : sesso === 'donna' && testStep === 0, prfiloDestroDonna : sesso === 'donna' && testStep === 1, prfiloSinistroDonna : sesso === 'donna' && testStep === 2  }" ng-show="testStep >= 0 && testStep <= 2"></div>
+                        <canvas id="graficoProfilo" ng-show="testStep >= 0 && testStep <= 2"></canvas>
+                        <!--ROBA PER IL PESO-->
+	                    <!-- WIZARD -->
+	                    <div id="wizard_container" layout="row" layout-align="start center" style="display: none;">
+	                        <!--<md-button ng-hide="testStarted" class="md-raised md-primary" ng-click="startWizard()">
+	                            Inizia il Test
+	                        </md-button>-->
+	
+	                        <md-card flex flex-lg="85" flex-md="85"
+	                                 ng-class="{'testStep4CardColor' : testStep === 3}">
+	                            <md-card-header>
+	                                <md-card-header-text>
+	                                    <span ng-hide="testStarted" class="md-title">Trova il materasso perfetto per te!</span>
+	                                    <span ng-show="testStarted && testStep == 0" class="md-title">Step 1/3 - posizione supina <i
+	                                            class="material-icons" style="color: red;"
+	                                            ng-show="testStep === 0 && positionDetected !== 2">clear</i><i
+	                                            class="material-icons" style="color: green;"
+	                                            ng-show="testStep === 0 && positionDetected === 2">done</i></span>
+	                                    <span ng-show="testStarted && testStep == 1" class="md-title">Step 2/3 - posizione fetale sinistra <i
+	                                            class="material-icons" style="color: red;"
+	                                            ng-show="testStep === 1 && positionDetected !== 1">clear</i><i
+	                                            class="material-icons" style="color: green;"
+	                                            ng-show="testStep === 1 && positionDetected === 1">done</i></span>
+	                                    <span ng-show="testStarted && testStep === 2" class="md-title">Step 3/3 - posizione fetale destra <i
+	                                            class="material-icons" style="color: red;"
+	                                            ng-show="testStep === 2 && positionDetected !== 0">clear</i><i
+	                                            class="material-icons" style="color: green;"
+	                                            ng-show="testStep === 2 &&  positionDetected === 0">done</i></span>
+	                                    <span ng-show="testStarted && testStep == 3" class="md-title"
+	                                          style="color: white; text-align: center;">Ecco i materassi che più si adattano al tuo corpo</span>
+	                                    <!--<span class="md-subhead">inizia il test per scoprire i materassi che più si adattano a te!</span>-->
+	                                </md-card-header-text>
+	                            </md-card-header>
+	                            <md-card-content>
+	                                <p ng-hide="testStarted">Il ComfortTest della LordFlex's ti consiglia i
+	                                    materassi che più si adattano al tuo corpo. Clicca sul bottone qui sotto per
+	                                    iniziare il test.</p>
+	
+	                                <div id="step1_content" ng-show="testStarted && testStep === 0" layout="column"
+	                                     layout-align="center start">
+	                                    <p flex>Allungati in posizione supina (come in figura) e rimani fermo per 5
+	                                        secondi. Il timer partirà non appena ti sarai messo nella posizione
+	                                        corretta.</p>
+	
+	                                    <md-progress-linear md-mode="determinate"
+	                                                        ng-value="testStepProgress"></md-progress-linear>
+	
+	                                </div>
+	                                <div id="step2_content" ng-show="testStarted && testStep === 1" layout="column"
+	                                     layout-align="center start">
+	                                    <p flex>Girati nella posizione fetale sinistra (come in figura) e rimani
+	                                        fermo per 5
+	                                        secondi. Il timer partirà non appena ti sarai messo nella posizione
+	                                        corretta.</p>
+	                                    <md-progress-linear md-mode="determinate"
+	                                                        ng-value="testStepProgress"></md-progress-linear>
+	
+	                                </div>
+	                                <div id="step3_content" ng-show="testStarted && testStep === 2" layout="column"
+	                                     layout-align="center start">
+	                                    <p flex>Girati nella posizione fetale destra (come in figura) e rimani fermo
+	                                        per 5
+	                                        secondi. Il timer partirà non appena ti sarai messo nella posizione
+	                                        corretta.</p>
+	                                    <md-progress-linear md-mode="determinate"
+	                                                        ng-value="testStepProgress"></md-progress-linear>
+	
+	                                </div>
+	
+	                                <div id="step4_content" ng-show="testStarted && testStep === 3" layout="row"
+	                                     layout-align="center center" layout-wrap>
+	                                    <div class="selectedMattressesIconContainer" flex="33"
+	                                         ng-repeat="mattress in catalogue"
+	                                         ng-if="selectedMattresses.indexOf(mattress.model) > -1">
+	                                        <md-button md-no-ink ng-click="mattressInfo(mattress)"
+	                                                   style="padding: 0 4px; margin: 0;">
+	                                            <img class="selectedMattressesIcon" src="{{mattress.urlIcon}}"/>
+	                                        </md-button>
+	                                    </div>
+	
+	                                </div>
+	
+	                            </md-card-content>
+	                            <md-card-actions layout="row" layout-align="end center"
+	                                             style="margin: 0; padding: 16px 22px;">
+	                                <!--<p flex ng-hide="testStarted"></p>-->
+	                                <md-button ng-hide="testStarted" flex="50" class="md-raised md-primary"
+	                                           ng-click="personConfigModal()"
+	                                           style="padding: 0 16px; background-color: #071d50; margin-left: 4px;">
+	                                    Inizia il Test
+	                                </md-button>
+	                                <!--<p flex ng-show="testStarted && testStep == 3"></p>-->
+	                                <md-button flex="50" ng-show="testStarted && testStep == 3"
+	                                           class="md-raised md-primary"
+	                                           ng-click="resetTest()"
+	                                           style="padding: 0 16px; background-color: rgba(81, 154, 196, 0.91);">
+	                                    Nuovo Test
+	                                </md-button>
+	                                <md-button flex="50"
+	                                           ng-hide="testStarted && testStep == 0 || testStep == 1 || testStep == 2"
+	                                           ng-disabled="numTestDone === 0" class="md-raised md-primary"
+	                                           ng-click="reportModal()"
+	                                           style="padding: 0 16px; background-color: rgba(81, 154, 196, 0.91); margin-right: 4px;">
+	                                    Scheda Cliente
+	                                </md-button>
+	                                <!--<p flex ng-show="testStarted && testStep == 3"></p>-->
+	                            </md-card-actions>
+	                        </md-card>
+	
+	                    </div>
+	                        
+	            </div>
+	            <div class="contentTestStep" ng-show="testStep >= -1 && testStep <= 3">
+		            <!--<div>-->
+		            	<div class="progressBar" style="width:{{testStepProgress}}% !important;">
+			            	<div class="whiteCircleProgressBar"></div>
+		            	</div>
+			            <div class="row imgStepBar">
+				            <div class="col-xs-1"></div>
+				             <div class="col-xs-2">
+					             <p class="titleStepBar" ng-class="{'barStepped' : testStep == -1}">step<b>1</b></p>
+					             <p class="stepBarSpace"></p>
+					             <p class="descStepBar" ng-class="{'barStepped' : testStep == -1}">INFORMAZIONI <br>GENERALI</p>
+					         </div>
+				             <div class="col-xs-2">
+					             <p class="titleStepBar" ng-class="{'barStepped' : testStep == 0}">step<b>2</b></p>
+					             <p class="stepBarSpace"></p>
+					             <p class="descStepBar" ng-class="{'barStepped' : testStep == 0}">POSIZIONE <br>SUPINA</p>
+					         </div>
+				             <div class="col-xs-2">
+					             <p class="titleStepBar" ng-class="{'barStepped' : testStep == 1}">step<b>3</b></p>
+					             <p class="stepBarSpace"></p>
+					             <p class="descStepBar" ng-class="{'barStepped' : testStep == 1}">POSIZIONE FETALE DESTRA</p>
+					         </div>
+				             <div class="col-xs-2">
+					             <p class="titleStepBar" ng-class="{'barStepped' : testStep == 2}">step<b>4</b></p>
+					             <p class="stepBarSpace"></p>
+					             <p class="descStepBar" ng-class="{'barStepped' : testStep == 2}">POSIZIONE FETALE SINISTRA</p>
+					         </div>
+				             <div class="col-xs-2">
+					             <p class="titleStepBar" ng-class="{'barStepped' : testStep == 3}">step<b>5</b></p>
+					             <p class="stepBarSpace"></p>
+					             <p class="descStepBar" ng-class="{'barStepped' : testStep == 3}">RISULTATI <br>DEL TEST</p>
+					         </div>
+				             <div class="col-xs-1"></div>
+			            </div>
+		            <!--</div>-->
+	            </div>
+	            
+	            <div class="descriptionVantaggiPage" ng-show="testStep === -2">
+		            <div class="vantaggiTitle" style="text-align: left;line-height: 26px;">COMFORTEST MISURA IL TUO COMFORT</div>
+		            <div class="descriptionPoint" style="font-size: 16px;line-height: 23px;">Lordflex's ha sviluppato e brevettato un dispositivo esclusivo con una tecnologia unica in Italia e nel mondo, in grado di trovare la soluzione perfetta per il tuo riposo: COMFORTEST, il nuovo e "rivoluzionario" materasso tecnologico. Una volta disteso su di esso, grazie a speciali sensori interni e ad un meccanismo brevettato, COMFORTEST riesce a rilevare la tua postura e la distribuzione del tuo peso corporeo. Acquisite queste informazioni, è poi in grado di proporre i modelli di materassi Lordflex's più adatti a te e di ricrearne la sensazione di comfort. <p style="font-size: 18px; font-family: SwissBTBolExt, serif;">Inizia subito il tuo test!</p></div>
+	            </div>
+	            
+	            <div class="contentVantaggi row" ng-show="testStep === -2">
+		            <div class="vantaggiTitle"><span class="numberTitle">5 </span>BUONI MOTIVI PER PROVARE COMFORTEST</div>
+		            <div style="width: 100%; padding-left:60px; padding-right: 60px; height: 71%;">
+			            <div class="vantaggiPoint">
+				            <div class="titlePoint"><span class="numberTitle">1 </span>semplice</div>
+				            <div class="descriptionPoint">Permette di scegliere più facilmente il materasso migliore per te.</div>
+			            </div>
+			            <div class="vantaggiPoint">
+				            <div class="titlePoint"><span class="numberTitle">2 </span>sicuro</div>
+				            <div class="descriptionPoint">Evita dubbi, incertezze e scelte sbagliate.</div>
+			            </div>
+			            <div class="vantaggiPoint">
+				            <div class="titlePoint"><span class="numberTitle">3 </span>veloce</div>
+				            <div class="descriptionPoint">Facilità l'acquisto, grazie al confronto tra 14 modelli di materassi Lordflex's.</div>
+			            </div>
+			            <div class="vantaggiPoint">
+				            <div class="titlePoint"><span class="numberTitle">4 </span>tecnologico</div>
+				            <div class="descriptionPoint">Accresce la consapevolezza legata al proprio stato di comfort, grazie alla tecnologia interattiva e funzionale.</div>
+			            </div>
+			            <div class="vantaggiPoint">
+				            <div class="titlePoint"><span class="numberTitle">5 </span>divertente</div>
+				            <div class="descriptionPoint">Propone un approccio all'acquisto "moderno e multimediale".</div>
+			            </div>
+		            </div>
+	            </div>
+	            <div class="contentTextVantaggi" ng-show="testStep === -2">
+		            
+	            </div>
+	            <div class="contentTestBatton">
+		            <div class="lordButton" ng-show="testStep == -1 && verifiedInfoClients" ng-click="startTest()" style="float: right;margin-right: 7%;margin-top: 2%;">procedi</div>
+		            
+		            <div class="lordButton" ng-show="numTestDone === 1" ng-click="reportModal()" style="background-color:#86cee1; float: right;margin-right: 7%;margin-top: 2%;">scheda cliente</div>
+					<div class="lordButton" ng-class="{'newTest' : numTestDone === 0, 'newTestRight' : numTestDone === 1}" ng-show="testStep == 3" ng-click="newTest()" style="">nuovo test</div>
+					
+					<div class="lordButton" ng-show="testStep == -2" ng-click="selectType('coppia')" style="background-color:#86cee1; float: right;margin-right: 7%;margin-top: 2%;">test di coppia</div>
+					<div class="lordButton" ng-show="testStep == -2" ng-click="selectType('singolo')" style="float: right;margin-right: 1%;margin-top: 2%;">test individuale</div>
+	            </div>
+            </div>
+            
+			<textbox propertyname="moveDeg" label="moveDeg" style="display: none;"></textbox>
+            <textbox propertyname="mat" label="mat" style="display: none;"></textbox>
+            <textbox propertyname="pes" label="pes" style="display: none;"></textbox>
+            <textbox propertyname="tara" label="tara" style="display: none;"></textbox>
+        </div>
+    </div>
+</div>
+
+<script src="applications/12/12.js"></script>
